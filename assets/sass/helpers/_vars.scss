@@ -1,0 +1,41 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("@/assets/fonts/Roboto-Bold.ttf");
+  font-style: normal;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("@/assets/fonts/Roboto-BoldItalic.ttf");
+  font-style: italic;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("@/assets/fonts/Roboto-MediumItalic.ttf");
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("@/assets/fonts/Roboto-Medium.ttf");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Rubik";
+  src: url("@/assets/fonts/Rubik-SemiBold.ttf");
+  font-weight: bold;
+}
+
+// fonts
+$f--content : Roboto;
+$f--btn : Rubik;
+
+// Colors
+$c--primary : #021C4C;
+$c--secondary: #0097C4;
+$c--secondary--light : #DDF6FF;
+

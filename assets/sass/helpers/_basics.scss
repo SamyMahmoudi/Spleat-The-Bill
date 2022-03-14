@@ -1,0 +1,31 @@
+// Page's text reset
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  color: $c--primary;
+  font-family: $f--content;
+}
+
+// Page's buttons
+.btn {
+  border: solid 1px $c--primary;
+  font-family: $f--btn;
+  font-size: 18px;
+  border-radius: 30px;
+  padding: 0.5em 3em;
+  display: inline-block;
+
+  &-regular {
+    color: $c--primary;
+    background: white;
+  }
+
+  &-fill {
+    color: white;
+    background-color: $c--primary;
+  }
+}
