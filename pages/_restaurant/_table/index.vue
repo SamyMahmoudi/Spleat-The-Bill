@@ -1,17 +1,25 @@
 <template>
   <div>
-    <h1>{{ restaurantFound.restaurant.name }}</h1>
-    <h2>Table N°{{ restaurantFound.table.number }}</h2>
+    <!-- display the restaurant's name -->
+    <h1>
+      {{ restaurantFound.restaurant.name }}
+    </h1>
+    <!-- display the table's number -->
+    <h2>
+      Table N°{{ restaurantFound.table.number }}
+    </h2>
   </div>
 </template>
 
 <script>
+// import fake datas
 import {restaurants} from '~/static/data/restaurants.json'
-export default {
 
+export default {
   asyncData({params}) {
     return {
       allRestaurants : restaurants,
+      // get the params from the URL
       paramsOptions : {
         theRestaurantId : params.restaurant,
         theTableId : params.table,
@@ -29,14 +37,17 @@ export default {
   },
 
   mounted() {
-    this.get_restaurant()
+    this.get_data()
   },
 
   methods : {
-    get_restaurant() {
+    get_data() {
+      // get the data of the restaurant which its corresponds to the params
       var getRestaurant = this.allRestaurants.filter( element => element.id == this.paramsOptions.theRestaurantId)
-      var getTable = getRestaurant[0].tables.filter(element => element.id == this.paramsOptions.theTableId)
       this.restaurantFound.restaurant = getRestaurant[0];
+
+      // get the data of the table which its corresponds to the params
+      var getTable = getRestaurant[0].tables.filter(element => element.id == this.paramsOptions.theTableId)
       this.restaurantFound.table = getTable[0];
     }
   }

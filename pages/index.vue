@@ -18,6 +18,7 @@
 </template>
 
 <script>
+// import fake datas
 import {restaurants} from '~/static/data/restaurants.json'
 
 export default {
