@@ -8,6 +8,12 @@
     <h2>
       Table N°{{ restaurantFound.table.number }}
     </h2>
+    
+    <!-- Pass restaurant info to button and display it -->
+    <button-download :restaurantFound ="restaurantFound"/>
+    
+    <!-- Pass table status to button -->
+    <button-pay-home :active="restaurantFound.table.active"/>
   </div>
 </template>
 
@@ -31,7 +37,8 @@ export default {
     return {
       restaurantFound : {
         restaurant : '',
-        table : ''
+        table : '',
+        menu: '',
       }
     }
   },
