@@ -1,3 +1,3 @@
 <template>
-  <h1>Indentification</h1>
+  <h1>Identification</h1>
 </template>
