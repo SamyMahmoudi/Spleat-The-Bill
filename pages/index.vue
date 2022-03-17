@@ -11,7 +11,6 @@
             {{ restaurant.name + ' table : ' + table.number }}
           </NuxtLink>
         </li>
-
       </ul>
     </div>
   </div>
@@ -22,11 +21,12 @@
 import {restaurants} from '~/static/data/restaurants.json'
 
 export default {
-  data() {
-    return {
-      allRestaurants : restaurants,
-    }
-  }
+    layout : 'connection',
+    data() {
+        return {
+            allRestaurants: restaurants,
+        };
+    },
 }
 </script>
 
