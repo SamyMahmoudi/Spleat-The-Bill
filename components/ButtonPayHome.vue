@@ -8,30 +8,22 @@
 <script>
 export default {
     name: "ButtonPayHome",
+    // props
     props: {
-        active: Boolean,
+      active: Boolean,
     },
   data() {
     return {
       paramsOptions : {
         // Get path for specific restaurant and table
-            fullPath : this.$route.path
+        fullPath : this.$route.path
       },
     }
   },
-
-  mounted() {
-  },
-  methods : {
-      
-    }
-  }
+}
 </script>
+
 <style lang="scss">
-  .btn-menu {
-    background-color: $c--primary;
-    color: white;
-  }
   .disabled {
     background-color: gray;
     border: grey;
