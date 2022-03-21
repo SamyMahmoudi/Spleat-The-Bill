@@ -7,10 +7,11 @@
 <style scoped lang="scss">
     .footer-container {
         width: 100%;
-        height: 30vh;
+        height: 40vh;
+        text-align: center;
         img {
-            width: 100%;
-            height: auto;
+            width: auto;
+            height: 100%;
         }
     }
 </style>

@@ -1,8 +1,16 @@
 <template>
     <div class="header-container">
-        <img src="~/static/data/img/logo-restaurant-1.png" alt="logo restaurant">
+      <img :src="'/data/img/' + restaurantLogo" alt="logo restaurant">
     </div>
 </template>
+
+<script>
+export default {
+  props : {
+    restaurantLogo : String
+  }
+}
+</script>
 
 <style scoped lang="scss">
     .header-container {

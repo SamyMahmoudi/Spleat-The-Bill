@@ -1,19 +1,30 @@
 <template>
-  <div>
-    <!-- display the restaurant's name -->
-    <h1>
-      {{ restaurantFound.restaurant.name }}
-    </h1>
-    <!-- display the table's number -->
-    <h2>
-      Table N°{{ restaurantFound.table.number }}
-    </h2>
-    
-    <!-- Pass restaurant info to button and display it -->
-    <button-download :restaurantFound ="restaurantFound"/>
-    
-    <!-- Pass table status to button -->
-    <button-pay-home :active="restaurantFound.table.active"/>
+  <div id="PageWrapper">
+
+    <!-- page header  -->
+    <HeaderHome :restaurantLogo="restaurantFound.restaurant.logo" />
+
+    <!-- content -->
+    <main>
+      <div class="wrapper-titles">
+        <!-- display the restaurant's name -->
+        <!-- <h1> {{ restaurantFound.restaurant.name }} </h1> -->
+
+        <!-- display the table's number -->
+        <h2> Table N°{{ restaurantFound.table.number }} </h2>
+      </div>
+
+      <div class="wrapper-btn">
+        <!-- Pass restaurant info to button and display it -->
+        <ButtonDownload :restaurantFound ="restaurantFound"/>
+        <!-- Pass table status to button -->
+        <ButtonPayHome :active="restaurantFound.table.active"/>
+      </div>
+    </main>
+
+    <!-- page footer -->
+    <FooterHome />
+
   </div>
 </template>
 
@@ -60,3 +71,35 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+
+#PageWrapper {
+  height: 100vh;
+  @include column;
+
+  main {
+    flex: 1;
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+.wrapper-titles
+{
+  padding-top: 30px;
+  text-align: center;
+
+  h2 {
+    text-transform: uppercase;
+  }
+}
+
+.wrapper-btn
+{
+  div {
+    margin-top: 30px;
+  }
+}
+
+</style>

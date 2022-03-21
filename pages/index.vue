@@ -21,7 +21,6 @@
 import {restaurants} from '~/static/data/restaurants.json'
 
 export default {
-    layout : 'homeLayout',
     data() {
         return {
             allRestaurants: restaurants,
