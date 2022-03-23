@@ -15,9 +15,6 @@
       </div>
     </main>
 
-    <!-- page footer -->
-    <FooterHome />
-
   </div>
 </template>
 
@@ -45,8 +42,7 @@ export default {
         table : '',
         menu: '',
       },
-      // input name
-      username: '',
+      categories : '',
     }
   },
 
@@ -66,7 +62,7 @@ export default {
 
       var getCategories = this.restaurantFound.restaurant.categories;
       this.categories = getCategories;
-      
+
     },
     get_category_products(category) {
       var getProducts = this.restaurantFound.restaurant.products.filter( element => element.category_id == category.id)
@@ -87,34 +83,6 @@ export default {
     flex: 1;
     width: 90%;
     margin: 0 auto;
-  }
-}
-
-.wrapper-content {
-  padding-top: 30px;
-  text-align: center;
-
-  h2 {
-    text-transform: uppercase;
-  }
-
-  p {
-    padding-top: 15px;
-  }
-
-  form {
-    input {
-      margin-top: 30px;
-      border: none;
-      outline: none;
-      width: 100%;
-      border-bottom: solid gray 1px;
-      padding-bottom: 8px;
-    }
-
-    button {
-      margin-top: 30px;
-    }
   }
 }
 
