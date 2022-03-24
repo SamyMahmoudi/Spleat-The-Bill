@@ -1,0 +1,470 @@
+{
+    "restaurants": [
+        {
+            "id": 1205,
+            "name": "Phil's sports grill",
+            "logo": "logo-restaurant-1.png",
+            "menu": "menu-2.pdf",
+            "tables": [
+                {
+                    "id": 1,
+                    "number": 1,
+                    "active": true,
+                    "bill": {
+                        "total_price": 44.99,
+                        "total_items": 3,
+                        "bought_products": [
+                            {
+                                "boissons": [
+                                    {
+                                        "id": 125,
+                                        "name": "Gin Tonic",
+                                        "price": 7.00,
+                                        "amount": 2
+                                    }
+                                ],
+                                "plats": [
+                                    {
+                                        "id": 312,
+                                        "name": "Filet de saumon au parmesan",
+                                        "price": 15.99,
+                                        "amount": 1
+                                    },
+                                    {
+                                        "id": 315,
+                                        "name": "Ribs de porc au barbecue",
+                                        "price": 15.00,
+                                        "amount": 1
+                                    }
+                                ],
+                                "desserts": [
+                                    {
+                                        "id": 460,
+                                        "name": "Glace citron 1 boule",
+                                        "price": 2.00,
+                                        "amount": 1
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": 2,
+                    "number": 2,
+                    "active": false,
+                    "bill": null
+                },
+                {
+                    "id": 5,
+                    "number": 3,
+                    "active": true,
+                    "bill": {
+                        "total_price": 13.50,
+                        "total_items": 2,
+                        "bought_products": [
+                            {
+                                "desserts": [
+                                    {
+                                        "id": 455,
+                                        "name": "Crème brulée",
+                                        "price": 7.00,
+                                        "amount": 1
+                                    },
+                                    {
+                                        "id": 470,
+                                        "name": "Tarte aux pommes",
+                                        "price": 4.50,
+                                        "amount": 1
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ],
+            "categories": [
+                {
+                    "id": 1,
+                    "name": "boissons",
+                    "picture": "drinks_icon.png"
+                },
+                {
+                    "id": 2,
+                    "name": "entrees",
+                    "picture": "appetizers_icon.png"
+                },
+                {
+                    "id": 3,
+                    "name": "plats",
+                    "picture": "dishes_icon.png"
+                },
+                {
+                    "id": 4,
+                    "name": "desserts",
+                    "picture": "desserts_icon.png"
+                }
+            ]
+        },
+        {
+            "id": 1236,
+            "name": "Les fils à maman",
+            "logo": "logo-restaurant-3.png",
+            "menu": "menu-3.pdf",
+            "tables": [
+                {
+                    "id": 1,
+                    "number": 1,
+                    "active": true,
+                    "bill": {
+                        "total_price": 32.75,
+                        "total_items": 3,
+                        "bought_products": [
+                            {
+                                "boissons": [
+                                    {
+                                        "id": 2,
+                                        "name": "Ice-Tea",
+                                        "price": 2.75,
+                                        "amount": 1 
+                                    }
+                                ],
+                                "plats": [
+                                    {
+                                        "id": 5,
+                                        "name": "Biftecks londonien",
+                                        "price": 22,
+                                        "amount": 1
+                                    }
+                                ],
+                                "desserts": [
+                                    {
+                                        "id": 7,
+                                        "name": "Cheesecake New Yorkais",
+                                        "price": 8,
+                                        "amount": 1
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": 2,
+                    "number": 2,
+                    "active": false,
+                    "bill": null
+                },
+                {
+                    "id": 3,
+                    "number": 3,
+                    "active": true,
+                    "bill": {
+                        "total_price": 59,
+                        "total_items": 6,
+                        "bought_products": [
+                            {
+                                "boissons": [
+                                    {
+                                        "id": 1,
+                                        "name": "Coca-Cola",
+                                        "price": 3.00,
+                                        "amount": 2 
+                                    },
+                                    {
+                                        "id": 5,
+                                        "name": "Biftecks londonien",
+                                        "price": 22,
+                                        "amount": 1
+                                    }
+                                ],
+                                "plats": [
+                                    {
+                                        "id": 6,
+                                        "name": "Pizza de style chicago",
+                                        "price": 15,
+                                        "amount": 1
+                                    }
+                                ],
+                                "desserts": [
+                                    {
+                                        "id": 7,
+                                        "name": "Cheesecake New Yorkais",
+                                        "price": 8,
+                                        "amount": 2
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ],
+            "categories": [
+                {
+                    "id": 1,
+                    "name": "Boissons",
+                    "picture": "drinks_icon.png"
+                },
+                {
+                    "id": 2,
+                    "name": "Entrees",
+                    "picture": "appetizers_icon.png"
+                },
+                {
+                    "id": 3,
+                    "name": "Plats",
+                    "picture": "dishes_icon.png"
+                },
+                {
+                    "id": 4,
+                    "name": "Desserts",
+                    "picture": "desserts_icon.png"
+                }
+            ]
+        },
+        {
+            "id": 1528,
+            "name": "Burger Country",
+            "logo": "logo-restaurant-2.png",
+            "menu": "menu-1.pdf",
+            "tables": [
+                {
+                    "id": 8,
+                    "number": 12,
+                    "active": false,
+                    "bill": null
+                },
+                {
+                    "id": 9,
+                    "number": 17,
+                    "active": false,
+                    "bill": null
+                },
+                {
+                    "id": 10,
+                    "number": 19,
+                    "active": true,
+                    "bill": {
+                        "total_price": 65.43,
+                        "total_items": 8,
+                        "bought_products": [
+                            {
+                                "boissons": [
+                                    {
+                                        "id": 1,
+                                        "name": "Coca cola",
+                                        "price": 3.99,
+                                        "amount": 2 
+                                    },
+                                    {
+                                        "id": 3,
+                                        "name": "Jus de fruit",
+                                        "price": 2.99,
+                                        "amount": 1
+                                    }
+                                ],
+                                "plats": [
+                                    {
+                                        "id": 6,
+                                        "name": "Ailes de poulet",
+                                        "price": 8.50,
+                                        "amount": 1
+                                    },
+                                    {
+                                        "id": 9,
+                                        "name": "Steak",
+                                        "price": 12.99,
+                                        "amount": 3
+                                    }
+                                ],
+                                "desserts": [
+                                    {
+                                        "id": 12,
+                                        "name": "Cheesecake",
+                                        "price": 6.99,
+                                        "amount": 1
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ],
+            "products": [
+                {
+                    "id": 1,
+                    "name": "Coca cola",
+                    "price": 3.99,
+                    "category_id": 1
+                },
+                {
+                    "id": 2,
+                    "name": "Badoit",
+                    "price": 3.50,
+                    "category_id": 1
+                },
+                {
+                    "id": 3,
+                    "name": "Jus de fruit",
+                    "price": 2.99,
+                    "category_id": 1
+                },
+                {
+                    "id": 4,
+                    "name": "Salade",
+                    "price": 5.99,
+                    "category_id": 2
+                },
+                {
+                    "id": 5,
+                    "name": "Bâtonnets de mozzarella",
+                    "price": 6.50,
+                    "category_id": 2
+                },
+                {
+                    "id": 6,
+                    "name": "Ailes de poulet",
+                    "price": 8.50,
+                    "category_id": 2
+                },
+                {
+                    "id": 7,
+                    "name": "Burger grillé à la flamme",
+                    "price": 7.99,
+                    "category_id": 3
+                },
+                {
+                    "id": 8,
+                    "name": "Burger BBQ",
+                    "price": 9.99,
+                    "category_id": 3
+                },
+                {
+                    "id": 9,
+                    "name": "Steak",
+                    "price": 12.99,
+                    "category_id": 3
+                },
+                {
+                    "id": 10,
+                    "name": "Tiramisu",
+                    "price": 9.99,
+                    "category_id": 4
+                },
+                {
+                    "id": 11,
+                    "name": "Glace chocolat/vanille 2 boules",
+                    "price": 7.50,
+                    "category_id": 4
+                },
+                {
+                    "id": 12,
+                    "name": "Cheesecake",
+                    "price": 6.99,
+                    "category_id": 4
+                }
+            ],
+            "categories": [
+                {
+                    "id": 1,
+                    "name": "Boissons",
+                    "picture": "drinks_icon.png"
+                },
+                {
+                    "id": 2,
+                    "name": "Entrées",
+                    "picture": "appetizers_icon.png"
+                },
+                {
+                    "id": 3,
+                    "name": "Plats",
+                    "picture": "dishes_icon.png"
+                },
+                {
+                    "id": 4,
+                    "name": "Desserts",
+                    "picture": "desserts_icon.png"
+                }
+            ],
+            "bills": [
+                {
+                    "id": 224,
+                    "table_id": 8,
+                    "total_price": 58.50,
+                    "total_items": 4,
+                    "created_at": "2022-03-12T20:20:29+0000",
+                    "bought_products": [
+                        {
+                            "id": 1,
+                            "product_id": 1,
+                            "amount": 2
+                        },
+                        {
+                            "id": 2,
+                            "product_id": 7,
+                            "amount": 1
+                        },
+                        {
+                            "id": 3,
+                            "product_id": 8,
+                            "amount": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 225,
+                    "table_id": 9,
+                    "total_price": 76.99,
+                    "total_items": 8,
+                    "created_at": "2022-03-12T20:43:29+0000",
+                    "bought_products": [
+                        {
+                            "id": 1,
+                            "product_id": 1,
+                            "amount": 2
+                        },
+                        {
+                            "id": 2,
+                            "product_id": 3,
+                            "amount": 1
+                        },
+                        {
+                            "id": 3,
+                            "product_id": 6,
+                            "amount": 1
+                        },
+                        {
+                            "id": 4,
+                            "product_id": 9,
+                            "amount": 3
+                        },
+                        {
+                            "id": 5,
+                            "product_id": 12,
+                            "amount": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 226,
+                    "table_id": 10,
+                    "total_price": 14.99,
+                    "total_items": 2,
+                    "created_at": "2022-03-12T21:04:29+0000",
+                    "bought_products": [
+                        {
+                            "id": 1,
+                            "product_id": 2,
+                            "amount": 1
+                        },
+                        {
+                            "id": 2,
+                            "product_id": 7,
+                            "amount": 1
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
