@@ -6,19 +6,12 @@
 
     <!-- content -->
     <main>
-      <!-- <div class="wrapper-content">
+      <div class="wrapper-content">
         <div v-for="category in categories" :key="category.id">
           <h2>{{ category.name }}</h2>
-          <div v-for="product in orderedProducts" :key="product.id">
-            <p>{{ product. }}</p>
-            <p><span>{{ get_bill_product_info(product.id)[0].amount }}</span></p>
-          </div>
-        </div>
-      </div> -->
-      <div class="wrapper-content">
-        <div v-for="category in categories" :key="category.id">{{ category.name }}
           <div v-for="product in get_category_products(category.name)" :key="product.id">
-            {{ product.name }}
+            <p>{{ product.name }}</p>
+            <p>{{ product.amount }}</p>
           </div>
         </div>
       </div>
@@ -51,7 +44,7 @@ export default {
         table : '',
         menu: '',
       },
-      categories : '',
+      categories : [],
       bill: '',
       orderedProducts: [],
     }
@@ -71,11 +64,18 @@ export default {
       var getTable = getRestaurant[0].tables.filter(element => element.id == this.paramsOptions.theTableId)
       this.restaurantFound.table = getTable[0];
 
-      var getCategories = this.restaurantFound.restaurant.categories;
-      this.categories = getCategories;
-
       var getProducts = this.restaurantFound.table.bill.bought_products
       this.orderedProducts = getProducts[0]
+
+      //get all categories
+      var getCategories = this.restaurantFound.restaurant.categories;
+
+      //only add to the table categories the one that have ordered products in them
+      getCategories.forEach(category => {
+        if(this.orderedProducts[category.name] != undefined) {
+            this.categories.push(category);
+          }
+      });
     },
     get_category_products(category) {
       var getProducts = this.orderedProducts[category]
