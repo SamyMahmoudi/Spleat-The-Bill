@@ -7,13 +7,20 @@
     <!-- content -->
     <main>
       <div class="wrapper-content">
-        <div v-for="category in categories" :key="category.id">
+
+        <div v-for="category in categories" :key="category.id" class="category-item">
           <h2>{{ category.name }}</h2>
-          <div v-for="product in get_category_products(category.name)" :key="product.id">
-            <p>{{ product.name }}</p>
-            <p>{{ product.amount }}</p>
+          <div class="product-container">
+            <CardProduct v-for="product in get_category_products(category.name)"
+              :productImg="category.picture"
+              :productName="product.name"
+              :productAmount="product.amount"
+              :productPrice="product.price"
+              class="product-card"
+              :key="product.id"/>
           </div>
         </div>
+
       </div>
     </main>
 
@@ -81,7 +88,7 @@ export default {
       var getProducts = this.orderedProducts[category]
       return getProducts;
     },
-    
+
   }
 }
 
@@ -99,5 +106,37 @@ export default {
     margin: 0 auto;
   }
 }
+
+.category-item
+{
+  margin-top: 30px;
+  h2 {
+    text-transform: uppercase;
+    margin-left: 10px;
+  }
+}
+
+.product
+{
+  &-container {
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &-card {
+    padding: 20px 30px;
+    width: 180px;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+    margin: 30px 30px 30px 10px;
+    text-align: center;
+    position: relative;
+  }
+}
+
 
 </style>

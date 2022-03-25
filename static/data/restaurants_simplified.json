@@ -87,22 +87,22 @@
                 {
                     "id": 1,
                     "name": "boissons",
-                    "picture": "drinks_icon.png"
+                    "picture": "icon-boisson.png"
                 },
                 {
                     "id": 2,
                     "name": "entrees",
-                    "picture": "appetizers_icon.png"
+                    "picture": "icon-entree.png"
                 },
                 {
                     "id": 3,
                     "name": "plats",
-                    "picture": "dishes_icon.png"
+                    "picture": "icon-plat.png"
                 },
                 {
                     "id": 4,
                     "name": "desserts",
-                    "picture": "desserts_icon.png"
+                    "picture": "icon-dessert.png"
                 }
             ]
         },
@@ -126,7 +126,7 @@
                                         "id": 2,
                                         "name": "Ice-Tea",
                                         "price": 2.75,
-                                        "amount": 1 
+                                        "amount": 1
                                     }
                                 ],
                                 "plats": [
@@ -169,7 +169,7 @@
                                         "id": 1,
                                         "name": "Coca-Cola",
                                         "price": 3.00,
-                                        "amount": 2 
+                                        "amount": 2
                                     }
                                 ],
                                 "plats": [
@@ -203,22 +203,22 @@
                 {
                     "id": 1,
                     "name": "boissons",
-                    "picture": "drinks_icon.png"
+                    "picture": "icon-boisson.png"
                 },
                 {
                     "id": 2,
                     "name": "entrees",
-                    "picture": "appetizers_icon.png"
+                    "picture": "icon-entree.png"
                 },
                 {
                     "id": 3,
                     "name": "plats",
-                    "picture": "dishes_icon.png"
+                    "picture": "icon-plat.png"
                 },
                 {
                     "id": 4,
                     "name": "desserts",
-                    "picture": "desserts_icon.png"
+                    "picture": "icon-dessert.png"
                 }
             ]
         },
@@ -254,7 +254,7 @@
                                         "id": 1,
                                         "name": "Coca cola",
                                         "price": 3.99,
-                                        "amount": 2 
+                                        "amount": 2
                                     },
                                     {
                                         "id": 3,
@@ -294,22 +294,22 @@
                 {
                     "id": 1,
                     "name": "boissons",
-                    "picture": "drinks_icon.png"
+                    "picture": "icon-boisson.png"
                 },
                 {
                     "id": 2,
                     "name": "entrees",
-                    "picture": "appetizers_icon.png"
+                    "picture": "icon-entree.png"
                 },
                 {
                     "id": 3,
                     "name": "plats",
-                    "picture": "dishes_icon.png"
+                    "picture": "icon-plat.png"
                 },
                 {
                     "id": 4,
                     "name": "desserts",
-                    "picture": "desserts_icon.png"
+                    "picture": "icon-dessert.png"
                 }
             ]
         }
