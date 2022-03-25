@@ -76,11 +76,11 @@ export default {
     height: 100vh;
     @include column;
 
-    main {
-        flex: 1;
-        width: 90%;
-        margin: 0 auto;
-    }
+        main {
+            flex: 1;
+            width: 90%;
+            margin: 0 auto;
+        }
     }
 
     .wrapper-content {
@@ -89,19 +89,20 @@ export default {
     flex-direction: column;
     text-align: center;
 
-    .text-content {
-        text-align: center;
-        padding-bottom: 40px;
-        h2 {
-            font-weight: 400;
-            padding-bottom: 15px;
+        .text-content {
+            text-align: center;
+            padding-bottom: 40px;
+            h2 {
+                font-weight: 400;
+                padding-bottom: 15px;
+            }
         }
-    }
 
-    #ValidationLogo {
-        width: 40%;
-        height: auto;
-    }
+        #ValidationLogo {
+            max-width: 250px;
+            width: 40%;
+            height: auto;
+        }
     }
 
 </style>
