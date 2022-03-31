@@ -14,12 +14,14 @@
           Saisissez votre prénom pour payer et partager votre addition.
         </p>
 
-        <form>
-          <input type="text" name="name" id="name"
+        <!-- Prevent reload of the page when submitted -->
+        <form @submit.prevent>
+          <input type="text" id="name" name="name"
             placeholder="Votre prénom"
             v-model="username" required>
 
-          <button type="submit" class="btn btn-fill" @click="redirect" :class="{ disabled : IsEmptyInput}" :disabled="IsEmptyInput">
+          <!-- Modify the button's style when input is empty and call the redirection function when clicked -->
+          <button class="btn btn-fill" @click="redirect" :class="{ disabled : IsEmptyInput}" :disabled="IsEmptyInput">
             Continuer
           </button>
         </form>
@@ -63,7 +65,6 @@ export default {
       },
       // input name
       username: '',
-      isDisabled: true
     }
   },
 
@@ -84,14 +85,18 @@ export default {
     
 
     redirect() {
-      this.$router.replace(this.fullPath + '/selection-produits')
+      // Check that the input is not empty
+      if(!this.IsEmptyInput) {
+        // Change url without adding an history step and pass the username
+        this.$router.replace('selection-produits?name='+this.username)
+      }
     },
 
     
   },
   computed: {
     IsEmptyInput() {
-      // Check if username entered in input is empty
+      // Check if username entered in input is empty and return true or false
       return this.username == ''
     }
   }
