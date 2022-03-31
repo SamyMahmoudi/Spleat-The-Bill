@@ -17,9 +17,9 @@
         <form>
           <input type="text" name="name" id="name"
             placeholder="Votre prénom"
-            v-model="username">
+            v-model="username" required>
 
-          <button type="submit" class="btn btn-fill">
+          <button type="submit" class="btn btn-fill" @click="redirect" :class="{ disabled : IsEmptyInput}" :disabled="IsEmptyInput">
             Continuer
           </button>
         </form>
@@ -52,13 +52,18 @@ export default {
 
   data() {
     return {
+      paramsOptions : {
+        // Get path for specific restaurant and table
+        fullPath : this.$route.path
+      },
       restaurantFound : {
         restaurant : '',
         table : '',
         menu: '',
       },
       // input name
-      username: ''
+      username: '',
+      isDisabled: true
     }
   },
 
@@ -75,6 +80,19 @@ export default {
       // get the data of the table which its corresponds to the params
       var getTable = getRestaurant[0].tables.filter(element => element.id == this.paramsOptions.theTableId)
       this.restaurantFound.table = getTable[0];
+    },
+    
+
+    redirect() {
+      this.$router.replace(this.fullPath + '/selection-produits')
+    },
+
+    
+  },
+  computed: {
+    IsEmptyInput() {
+      // Check if username entered in input is empty
+      return this.username == ''
     }
   }
 }
@@ -122,4 +140,8 @@ export default {
   }
 }
 
+.disabled {
+    background-color: gray;
+    border: grey;
+  }
 </style>
