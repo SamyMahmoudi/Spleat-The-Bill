@@ -25,7 +25,8 @@ export default {
 
 <style scoped lang="scss">
     .header-container {
-        height: 18vh;
+        // height: 18vh;
+        padding-top: 2em;
         @include center-align;
         justify-content: end;
         flex-direction: column;
@@ -48,6 +49,9 @@ export default {
             p, h3 {
                 margin-bottom: 10px;
                 color: white;
+            }
+            h3 {
+              margin-bottom: 1em;
             }
             .price {
                 font-size: 30px;
