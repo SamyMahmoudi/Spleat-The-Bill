@@ -23,7 +23,25 @@
               :key="product.id"/>
           </div>
         </div>
-
+        <!-- Forgotten products modal -->
+        <div v-if="showForgotten" class="forgotten-container">
+          <div class="forgotten-overlay" @click="showForgotten = !showForgotten"></div>
+          <div class="forgotten-products">
+            <h2 v-if="productLength == 1">Il semblerait qu'un produit ait été oublié !</h2>
+            <h2 v-else>Il semblerait que des produits aient été oubliés !</h2>
+            <div class="product-container">
+              <CardProduct v-for="product in get_category_products('plats')"
+              :productImg="categories[1].picture"
+              :productName="product.name"
+              :productAmount="product.amount"
+              :productPrice="product.price"
+              class="product-card"
+              :key="product.id"/>
+            </div>
+            <a href="#" class="btn btn-fill">Ajouter les produits</a>
+            <a href="#" class="close-link" @click="showForgotten = !showForgotten">Fermer</a>
+          </div>
+        </div>
       </div>
     </main>
 
@@ -56,6 +74,8 @@ export default {
             categories: [],
             billTotalPrice: "",
             orderedProducts: [],
+            showForgotten: true,
+            productLength: 1,
         };
     },
     mounted() {
@@ -133,6 +153,48 @@ export default {
     position: relative;
   }
 }
+
+.forgotten
+{
+  &-container {
+    z-index: 1;
+    background-color: rgb(0, 0, 0, 0.7);
+    height: 100vh;
+    width: 100vw;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    text-align: center;
+  }
+  &-overlay {
+    width: 100%;
+    height: 100%;
+  }
+  &-products {
+    position: fixed;
+    bottom: 0;
+    background-color: #fff;
+    padding: 10px;
+  }
+  
+  
+}
+.close-link {
+    color: $c--primary;
+    font-family: $f--content;
+    position: relative;
+
+    &::after {
+      position: absolute;
+      content: '';
+      right: 0;
+      left: 0;
+      height: 1px;
+      bottom: -4px; 
+		  width: 100%;
+		  background: lightgray;
+    }
+  }
 
 
 </style>
