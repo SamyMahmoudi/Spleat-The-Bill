@@ -53,6 +53,7 @@ export default {
             padding: 10px;
             background-color: white;
             border-radius: 5px;
+            position: relative;
 
             .quantity {
                 font-family: $f--content;
