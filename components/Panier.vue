@@ -48,8 +48,8 @@ export default {
         .product {
             margin: 0 15px;
             @include center-total;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             padding: 10px;
             background-color: white;
             border-radius: 5px;
@@ -74,6 +74,7 @@ export default {
     }
 
     .btn-recap {
+        height: 60px;
         width: 300px;
         margin: 0;
     }
