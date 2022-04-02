@@ -25,11 +25,15 @@
         </div>
         <!-- Forgotten products modal -->
         <div v-if="showForgotten" class="forgotten-container">
+          <!-- If clicked on overlay, close the modal -->
           <div class="forgotten-overlay" @click="showForgotten = !showForgotten"></div>
           <div class="forgotten-products">
-            <h2 v-if="productLength == 1">Il semblerait qu'un produit ait été oublié !</h2>
+            <hr class="header-line">
+            <!-- Check the number of forgotten products to adjust plural or singular -->
+            <h2 v-if="forgottenAmount == 1">Il semblerait qu'un produit ait été oublié !</h2>
             <h2 v-else>Il semblerait que des produits aient été oubliés !</h2>
             <div class="product-container">
+              <!-- Temporary data to be replaced with forgotten products array -->
               <CardProduct v-for="product in get_category_products('plats')"
               :productImg="categories[1].picture"
               :productName="product.name"
@@ -75,7 +79,7 @@ export default {
             billTotalPrice: "",
             orderedProducts: [],
             showForgotten: true,
-            productLength: 1,
+            forgottenAmount: 1,
         };
     },
     mounted() {
@@ -173,11 +177,26 @@ export default {
   &-products {
     position: fixed;
     bottom: 0;
+    width: 100%;
     background-color: #fff;
-    padding: 10px;
+    padding: 0 1em 1em 1em;
+    border-radius: 15px 15px 0 0;
+
+    .btn {
+      margin-bottom: 1em;
+    }
   }
   
   
+}
+
+.header-line {
+  width: 30%;
+  border: none;
+  border-top: 5px solid #E7E7E7;
+  border-radius: 15px;
+  margin: 1.5em auto 2em auto;
+
 }
 .close-link {
     color: $c--primary;
@@ -192,7 +211,7 @@ export default {
       height: 1px;
       bottom: -4px; 
 		  width: 100%;
-		  background: lightgray;
+		  background: #E7E7E7;
     }
   }
 
