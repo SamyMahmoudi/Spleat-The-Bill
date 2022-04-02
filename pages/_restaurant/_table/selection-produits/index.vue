@@ -27,6 +27,9 @@
       </div>
     </main>
 
+    <!-- panier -->
+    <Panier />
+
   </div>
 </template>
 
@@ -34,6 +37,7 @@
 // import fake datas
 import {restaurants} from '~/static/data/restaurants_simplified.json';
 import HeaderPrice from '~/components/HeaderPrice.vue';
+import Panier from '~/components/Panier.vue';
 
 export default {
     asyncData({ params }) {
@@ -87,7 +91,7 @@ export default {
             return getProducts;
         },
     },
-    components: { HeaderPrice }
+    components: { HeaderPrice, Panier }
 }
 
 </script>

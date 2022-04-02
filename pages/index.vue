@@ -1,7 +1,6 @@
 <template>
   <div>
 
-    <HeaderPrice />
     <!-- listing of all restaurants -->
     <div v-for="restaurant in allRestaurants" :key="restaurant.id">
       <!-- listing of all tables of each restaurant -->
