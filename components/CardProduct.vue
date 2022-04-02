@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div @click="addProduct">
     <div class="product-heading">
       <img :src="'/data/img/' + productImg" alt="Icon restaurant product">
-      <span class="product-quantity">{{ productAmount }}</span>
+      <span class="product-quantity">{{ productQuantity }}</span>
     </div>
     <h3 class="product-title">{{ productName }}</h3>
     <p class="product-footer">{{ productPrice }} €</p>
@@ -12,11 +12,33 @@
 <script>
 export default {
   props : [
+    'productId',
     'productImg',
     'productAmount',
     'productPrice',
     'productName'
-  ]
+  ],
+  data() {
+    return {
+      isQuantityEmpty: false,
+      productQuantity: this.productAmount
+    }
+  },
+  methods: {
+    addProduct() {
+      if(this.productQuantity === 0) {
+        
+      }
+      this.productQuantity--;
+      var product = {
+        id: this.productId,
+        name: this.productName,
+        price: this.productPrice,
+        img: this.productImg,
+      };
+      this.$store.commit('cart/add', product);
+    }
+  },
 }
 </script>
 

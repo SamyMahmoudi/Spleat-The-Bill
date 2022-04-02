@@ -14,7 +14,8 @@
         <div v-for="category in categories" :key="category.id" class="category-item">
           <h2>{{ category.name }}</h2>
           <div class="product-container">
-            <CardProduct v-for="product in get_category_products(category.name)"
+            <CardProduct v-for="product in get_category_products(category.name)" 
+              :productId="product.id"
               :productImg="category.picture"
               :productName="product.name"
               :productAmount="product.amount"
@@ -25,6 +26,11 @@
         </div>
 
       </div>
+      <div v-for="item in items" class="summary-content">
+        <div class="product-container">
+          <p>{{item.name}}</p>
+        </div>
+      </div>
     </main>
 
   </div>
@@ -34,6 +40,7 @@
 // import fake datas
 import {restaurants} from '~/static/data/restaurants_simplified.json';
 import HeaderPrice from '~/components/HeaderPrice.vue';
+// import { mapMutations } from 'vuex';
 
 export default {
     asyncData({ params }) {
@@ -53,6 +60,7 @@ export default {
                 table: "",
                 menu: "",
             },
+            testModel: "",
             categories: [],
             billTotalPrice: "",
             orderedProducts: [],
@@ -60,6 +68,11 @@ export default {
     },
     mounted() {
         this.get_data();
+    },
+    computed: {
+      items() {
+        return this.$store.state.cart.items;
+      }
     },
     methods: {
         get_data() {
@@ -86,6 +99,10 @@ export default {
             var getProducts = this.orderedProducts[category];
             return getProducts;
         },
+        //remove a product to the cart
+        // remove_Product(product) {
+        //   this.$store.commit('cart/remove', product);
+        // }
     },
     components: { HeaderPrice }
 }
@@ -125,6 +142,7 @@ export default {
   }
 
   &-card {
+    cursor: pointer;
     padding: 20px 30px;
     width: 180px;
     box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
