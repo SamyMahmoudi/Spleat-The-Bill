@@ -6,24 +6,31 @@
         <div class="product-container">
             <CardProduct
                 :productImg="iconBoisson"
-                :productName="Boisson"
+                :productName="'Boisson'"
                 :productAmount="2"
                 :productPrice="2.75"
                 class="product-card"/>
             
             <CardProduct
                 :productImg="iconPlat"
-                :productName="Plat"
+                :productName="'Plat'"
                 :productAmount="2"
                 :productPrice="8"
                 class="product-card"/>
 
             <CardProduct
                 :productImg="iconPlat"
-                :productName="Plat"
+                :productName="'Plat'"
                 :productAmount="1"
                 :productPrice="9"
                 class="product-card"/>
+
+            <div class="add-product">
+                <div class="add-container">
+                    <span class="add-icon">&#43;</span>
+                </div>
+                <h3 class="add-text">Ajouter un produit</h3>
+            </div>
         </div>
     </div>
 </template>
@@ -73,6 +80,35 @@ export default {
         img {
             width: 120px;
         }
+    }
+}
+
+.add 
+{
+    &-product {
+        width: 160px;
+        height: 235px;
+        margin: 10px;
+        @include center-total;
+        flex-direction: column;
+    }
+    &-container {
+        width: 40px;
+        height: 40px;
+        border-radius: 99px;
+        background-color: $c--primary;
+        @include center-total;
+        margin-bottom: 15px;
+    }
+    &-icon {
+        color: white;
+        font-size: 40px;
+        font-weight: 900;
+        border-radius: 15px;
+    }
+    &-text {
+        width: 70%;
+        text-align: center;
     }
 }
 
