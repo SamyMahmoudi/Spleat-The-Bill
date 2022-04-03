@@ -19,7 +19,7 @@ export default {
     .header-container {
         height: 18vh;
         @include center-align;
-        justify-content: end;
+        justify-content: flex-end;
         flex-direction: column;
         background-color: $c--secondary;
         fill: white;
