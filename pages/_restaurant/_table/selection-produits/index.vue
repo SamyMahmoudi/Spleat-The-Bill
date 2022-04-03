@@ -26,11 +26,12 @@
         </div>
 
       </div>
-      <div v-for="item in items" class="summary-content">
+      <div v-for="item in items" :key="item.index" class="summary-content">
         <div class="product-container">
-          <p>{{item.name}}</p>
+          <img :src="`/data/img/${item.product.img}`" alt="icon item">
         </div>
       </div>
+      <p>{{totalPrice}}</p>
     </main>
 
   </div>
@@ -72,6 +73,9 @@ export default {
     computed: {
       items() {
         return this.$store.state.cart.items;
+      },
+      totalPrice() {
+        return this.$store.getters.totalPrice;
       }
     },
     methods: {
@@ -98,11 +102,7 @@ export default {
         get_category_products(category) {
             var getProducts = this.orderedProducts[category];
             return getProducts;
-        },
-        //remove a product to the cart
-        // remove_Product(product) {
-        //   this.$store.commit('cart/remove', product);
-        // }
+        }
     },
     components: { HeaderPrice }
 }
