@@ -19,7 +19,6 @@
 <script>
 // import fake datas
 import {restaurants} from '~/static/data/restaurants.json'
-import HeaderPrice from '~/components/HeaderPrice.vue';
 
 export default {
     data() {

@@ -18,7 +18,7 @@
         <form @submit.prevent>
           <input type="text" id="name" name="name"
             placeholder="Votre prénom"
-            v-model="username" required>
+            v-model.trim="username" required>
 
           <!-- Modify the button's style when input is empty and call the redirection function when clicked -->
           <button class="btn btn-fill" @click="redirect" :class="{ disabled : IsEmptyInput}" :disabled="IsEmptyInput">
@@ -82,7 +82,7 @@ export default {
       var getTable = getRestaurant[0].tables.filter(element => element.id == this.paramsOptions.theTableId)
       this.restaurantFound.table = getTable[0];
     },
-    
+
 
     redirect() {
       // Check that the input is not empty
@@ -92,7 +92,7 @@ export default {
       }
     },
 
-    
+
   },
   computed: {
     IsEmptyInput() {
@@ -137,6 +137,7 @@ export default {
       width: 100%;
       border-bottom: solid gray 1px;
       padding-bottom: 8px;
+      font-family: $f--content;
     }
 
     button {

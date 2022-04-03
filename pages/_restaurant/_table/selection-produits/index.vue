@@ -3,6 +3,8 @@
 
     <!-- page header  -->
     <HeaderPrice
+      :idTable="restaurantFound.table.id"
+      :idRestaurant="restaurantFound.restaurant.id"
       :tableNumber="restaurantFound.table.number"
       :totalPrice="billTotalPrice"
     />
