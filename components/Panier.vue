@@ -4,16 +4,19 @@
             <div class="product">
                 <span class="quantity">{{ productAmount }}</span>
                 <img :src="'/data/img/icon-boisson.png'" alt="Icon restaurant product">
+                <span class="cross-icon">&#10006;</span>
             </div>
 
             <div class="product">
                 <span class="quantity">{{ productAmount }}</span>
                 <img :src="'/data/img/icon-plat.png'" alt="Icon restaurant product">
+                <span class="cross-icon">&#10006;</span>
             </div>
             
             <div class="product">
                 <span class="quantity">{{ productAmount }}</span>
                 <img :src="'/data/img/icon-dessert.png'" alt="Icon restaurant product">
+                <span class="cross-icon">&#10006;</span>
             </div>
         </div>
         <nuxt-link :to="`/`" tag="button" class="btn btn-fill btn-recap">Voir le récapitulatif : {{ selectedPrice }}</nuxt-link>
@@ -64,6 +67,17 @@ export default {
                 width: 20px;
                 height: 20px;
                 border-radius: 100%;
+            }
+
+            .cross-icon {
+                font-size: 10px;
+                font-weight: 900;
+                width: 10px;
+                height: 10px;
+                color: red;
+                position: absolute;
+                top: 5px;
+                right: 5px;
             }
 
             img {
