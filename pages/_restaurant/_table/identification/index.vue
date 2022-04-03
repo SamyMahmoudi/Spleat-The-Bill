@@ -14,12 +14,14 @@
           Saisissez votre prénom pour payer et partager votre addition.
         </p>
 
-        <form>
-          <input type="text" name="name" id="name"
+        <!-- Prevent reload of the page when submitted -->
+        <form @submit.prevent>
+          <input type="text" id="name" name="name"
             placeholder="Votre prénom"
-            v-model="username">
+            v-model="username" required>
 
-          <button type="submit" class="btn btn-fill">
+          <!-- Modify the button's style when input is empty and call the redirection function when clicked -->
+          <button class="btn btn-fill" @click="redirect" :class="{ disabled : IsEmptyInput}" :disabled="IsEmptyInput">
             Continuer
           </button>
         </form>
@@ -52,13 +54,17 @@ export default {
 
   data() {
     return {
+      paramsOptions : {
+        // Get path for specific restaurant and table
+        fullPath : this.$route.path
+      },
       restaurantFound : {
         restaurant : '',
         table : '',
         menu: '',
       },
       // input name
-      username: ''
+      username: '',
     }
   },
 
@@ -75,6 +81,23 @@ export default {
       // get the data of the table which its corresponds to the params
       var getTable = getRestaurant[0].tables.filter(element => element.id == this.paramsOptions.theTableId)
       this.restaurantFound.table = getTable[0];
+    },
+    
+
+    redirect() {
+      // Check that the input is not empty
+      if(!this.IsEmptyInput) {
+        // Change url without adding an history step and pass the username
+        this.$router.replace('selection-produits?name='+this.username)
+      }
+    },
+
+    
+  },
+  computed: {
+    IsEmptyInput() {
+      // Check if username entered in input is empty and return true or false
+      return this.username == ''
     }
   }
 }
@@ -122,4 +145,8 @@ export default {
   }
 }
 
+.disabled {
+    background-color: gray;
+    border: grey;
+  }
 </style>
