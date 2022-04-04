@@ -1,96 +1,63 @@
 <template>
-    <div class="panier-container">
-        <div class="all-products">
-            <div class="product">
-                <span class="quantity">{{ productAmount }}</span>
-                <img :src="'/data/img/icon-boisson.png'" alt="Icon restaurant product">
-                <span class="cross-icon">&#10006;</span>
-            </div>
+    <div class="panier-container" v-if="isProducts">
 
-            <div class="product">
-                <span class="quantity">{{ productAmount }}</span>
-                <img :src="'/data/img/icon-plat.png'" alt="Icon restaurant product">
-                <span class="cross-icon">&#10006;</span>
-            </div>
-            
-            <div class="product">
-                <span class="quantity">{{ productAmount }}</span>
-                <img :src="'/data/img/icon-dessert.png'" alt="Icon restaurant product">
-                <span class="cross-icon">&#10006;</span>
-            </div>
+        <div class="all-products">
+          <CardProductThumbnail v-for="(item, index) in products"
+            :key="item.product.name"
+            :productImg="item.product.img"
+            :productPrice="item.product.price"
+            :productIndex="index"
+          />
         </div>
-        <nuxt-link :to="`/`" tag="button" class="btn btn-fill btn-recap">Voir le récapitulatif : {{ selectedPrice }}</nuxt-link>
+
+        <NuxtLink :to="`/`" tag="button" class="btn btn-fill">
+          Voir le récapitulatif : {{ totalPrice }} €
+        </NuxtLink>
     </div>
 </template>
 
 <script>
 export default {
-    name: "Panier",
-    // add props
-    props : [
-        'selectedPrice'
-    ]
+
+  computed : {
+    products() {
+      return this.$store.state.cart.items;
+    },
+
+    isProducts() {
+      return this.$store.state.cart.isItems
+    },
+
+    totalPrice() {
+      return this.$store.state.cart.totalPrice
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .panier-container {
-    height: 200px;
+    padding-top: 30px;
+    border-radius: 10px 10px 0 0;
     width: 100%;
-    position: fixed;
+    position: sticky;
     bottom: 0;
     background-color: $bg-c--light-blue;
-    @include center-align;
-    flex-direction: column;
-    justify-content: space-evenly;
-    
-    .all-products {
-        @include center-total;
-        flex-direction: row;
 
-        .product {
-            margin: 0 15px;
-            @include center-total;
-            width: 60px;
-            height: 60px;
-            padding: 10px;
-            background-color: white;
-            border-radius: 5px;
-            position: relative;
-
-            .quantity {
-                font-family: $f--content;
-                color: white;
-                position: absolute;
-                top: -10px;
-                background: $c--primary;
-                width: 20px;
-                height: 20px;
-                border-radius: 100%;
-            }
-
-            .cross-icon {
-                font-size: 10px;
-                font-weight: 900;
-                width: 10px;
-                height: 10px;
-                color: red;
-                position: absolute;
-                top: 5px;
-                right: 5px;
-            }
-
-            img {
-                margin-top: 5px;
-                height: 100%;
-            }
-        }
+    .btn {
+      width: 90%;
+      margin-bottom: 30px;
     }
 
-    .btn-recap {
-        height: 60px;
-        width: 300px;
-        margin: 0;
+    .all-products {
+      display: flex;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      margin-bottom: 30px;
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
 }
 </style>

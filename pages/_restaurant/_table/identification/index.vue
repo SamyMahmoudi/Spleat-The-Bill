@@ -145,7 +145,7 @@ export default {
     }
 
     button {
-      margin-top: 60px;
+      margin: 30px 0;
     }
   }
 }

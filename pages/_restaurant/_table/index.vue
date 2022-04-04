@@ -88,8 +88,12 @@ export default {
 
 .wrapper-btn
 {
-  div {
+  div:nth-of-type(1) {
     margin-top: 60px;
+  }
+  div:nth-of-type(2) {
+    margin-top: 30px;
+    margin-bottom: 30px;
   }
 }
 
