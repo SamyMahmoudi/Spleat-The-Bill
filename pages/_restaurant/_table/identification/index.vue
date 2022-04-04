@@ -8,7 +8,7 @@
     <main>
       <div class="wrapper-content">
         <!-- display the table's number -->
-        <h2> Table N°{{ restaurantFound.table.number }} </h2>
+        <h2> Table {{ restaurantFound.table.number }} </h2>
 
         <p>
           Saisissez votre prénom pour payer et partager votre addition.
@@ -122,26 +122,30 @@ export default {
   text-align: center;
 
   h2 {
-    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 28px;
+    padding-top: 10px;
   }
 
   p {
     padding-top: 15px;
+    font-size: 18px;
   }
 
   form {
     input {
-      margin-top: 30px;
+      margin-top: 60px;
       border: none;
       outline: none;
       width: 100%;
       border-bottom: solid gray 1px;
       padding-bottom: 8px;
       font-family: $f--content;
+      font-size: 18px;
     }
 
     button {
-      margin-top: 30px;
+      margin-top: 60px;
     }
   }
 }

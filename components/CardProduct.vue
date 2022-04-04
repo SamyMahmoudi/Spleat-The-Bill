@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     addProduct() {
-      
+
       var product = {
           id: this.productId,
           name: this.productName,
@@ -54,13 +54,25 @@ export default {
 
   .product
   {
+    cursor: pointer;
+    min-width: 150px;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+    padding: 0.5em 1em 0;
+    text-align: center;
+    border-radius: 10px;
+    position: relative;
+    margin-right: 20px;
+
     &-heading {
       position: relative;
+      img {
+        height: 60px;
+      }
     }
 
     &-title {
       font-size: 14px;
-      font-weight: 400;
+      font-weight: normal;
       padding: 10px 0;
     }
 
@@ -77,11 +89,13 @@ export default {
     }
 
     &-footer {
-      padding-top: 30px;
+      padding-top: 10px;
       font-weight: 600;
       font-size: 18px;
     }
+
   }
+
   .disabled {
     cursor: not-allowed;
     &:after {

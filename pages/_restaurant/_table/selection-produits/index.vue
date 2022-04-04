@@ -15,7 +15,7 @@
         <div v-for="category in categories" :key="category.id" class="category-item">
           <h2>{{ category.name }}</h2>
           <div class="product-container">
-            <CardProduct v-for="product in get_category_products(category.name)" 
+            <CardProduct v-for="product in get_category_products(category.name)"
               :productId="product.id"
               :productImg="category.picture"
               :productName="product.name"
@@ -26,13 +26,14 @@
           </div>
         </div>
 
-        <ForgottenProducts
+        <!-- <ForgottenProducts
           v-if="showForgotten"
           @closed="showForgotten = !showForgotten"
           :products="get_category_products('plats')"
           :categories="categories"
-          :show="showForgotten"/>
+          :show="showForgotten"/> -->
       </div>
+
       <div v-for="item in items" :key="item.index" class="summary-content">
         <div class="product-container">
           <img :src="`/data/img/${item.product.img}`" alt="icon item">
@@ -42,7 +43,7 @@
     </main>
 
     <!-- panier -->
-    <Panier />
+    <!-- <Panier /> -->
 
   </div>
 </template>
@@ -124,8 +125,8 @@ export default {
   @include column;
 
   main {
-    width: 90%;
-    margin: 0 auto;
+    width: 95%;
+    margin: 0 0 0 5%;
   }
 }
 
@@ -138,26 +139,14 @@ export default {
   }
 }
 
-.product
-{
-  &-container {
-    display: flex;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-
-  &-card {
-    cursor: pointer;
-    padding: 20px 30px;
-    width: 180px;
-    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
-    margin: 30px 30px 30px 10px;
-    text-align: center;
-    position: relative;
+.product-container {
+  padding: 1em 0;
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
 

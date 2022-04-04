@@ -1,30 +1,19 @@
 <template>
   <div id="PageWrapper">
-
-    <!-- page header  -->
     <HeaderHome :restaurantLogo="restaurantFound.restaurant.logo" />
 
-    <!-- content -->
     <main>
       <div class="wrapper-titles">
-        <!-- display the restaurant's name -->
-        <!-- <h1> {{ restaurantFound.restaurant.name }} </h1> -->
-
-        <!-- display the table's number -->
-        <h2> Table N°{{ restaurantFound.table.number }} </h2>
+        <h2> Table {{ restaurantFound.table.number }} </h2><!-- display the table's number -->
       </div>
 
       <div class="wrapper-btn">
-        <!-- Pass restaurant info to button and display it -->
-        <ButtonDownload :restaurantFound ="restaurantFound"/>
-        <!-- Pass table status to button -->
-        <ButtonPayHome :active="restaurantFound.table.active"/>
+        <ButtonDownload :restaurantFound ="restaurantFound"/><!-- Pass restaurant info to button and display it -->
+        <ButtonPayHome :active="restaurantFound.table.active"/> <!-- Pass table status to button -->
       </div>
     </main>
 
-    <!-- page footer -->
     <FooterHome />
-
   </div>
 </template>
 
@@ -91,14 +80,16 @@ export default {
   text-align: center;
 
   h2 {
-    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 28px;
+    padding-top: 10px;
   }
 }
 
 .wrapper-btn
 {
   div {
-    margin-top: 30px;
+    margin-top: 60px;
   }
 }
 

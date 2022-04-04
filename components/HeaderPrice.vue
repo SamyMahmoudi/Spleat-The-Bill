@@ -32,10 +32,11 @@ export default {
 <style scoped lang="scss">
     .header-container {
         display: flex;
-        padding-top: 2em;
+        padding: 2em 0 1em;
         justify-content: flex-end;
         flex-direction: column;
         background-color: $c--secondary;
+        border-radius: 0 0 20px 20px;
 
         .arrow-previous {
             fill: white;

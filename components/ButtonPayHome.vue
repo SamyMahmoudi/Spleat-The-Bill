@@ -1,7 +1,13 @@
 <template>
     <div>
       <!-- Disable and change class of link if inactive table -->
-      <nuxt-link :to="`${paramsOptions.fullPath}/identification`" tag="button" :class="{ disabled : !active }" class="btn btn-fill" :disabled="!active">Payer l'addition</nuxt-link>
+      <NuxtLink
+        :to="`${paramsOptions.fullPath}/identification`"
+        tag="button"
+        :class="{ disabled : !active }"
+        class="btn btn-fill" :disabled="!active">
+          Payer l'addition
+      </NuxtLink>
     </div>
 </template>
 
