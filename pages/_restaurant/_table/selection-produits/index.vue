@@ -41,6 +41,9 @@
       <p>{{totalPrice}}</p>
     </main>
 
+    <!-- panier -->
+    <Panier />
+
   </div>
 </template>
 
@@ -111,7 +114,6 @@ export default {
             return getProducts;
         }
     },
-    components: { HeaderPrice, ForgottenProducts }
 }
 
 </script>
