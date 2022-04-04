@@ -12,7 +12,6 @@
     <!-- content -->
     <main>
       <div class="wrapper-content">
-
         <div v-for="category in categories" :key="category.id" class="category-item">
           <h2>{{ category.name }}</h2>
           <div class="product-container">
@@ -27,6 +26,12 @@
           </div>
         </div>
 
+        <ForgottenProducts
+          v-if="showForgotten"
+          @closed="showForgotten = !showForgotten"
+          :products="get_category_products('plats')"
+          :categories="categories"
+          :show="showForgotten"/>
       </div>
       <div v-for="item in items" :key="item.index" class="summary-content">
         <div class="product-container">
@@ -42,8 +47,6 @@
 <script>
 // import fake datas
 import {restaurants} from '~/static/data/restaurants_simplified.json';
-import HeaderPrice from '~/components/HeaderPrice.vue';
-// import { mapMutations } from 'vuex';
 
 export default {
     asyncData({ params }) {
@@ -67,6 +70,8 @@ export default {
             categories: [],
             billTotalPrice: "",
             orderedProducts: [],
+            showForgotten: true,
+            forgottenAmount: 1,
         };
     },
     mounted() {
@@ -106,12 +111,12 @@ export default {
             return getProducts;
         }
     },
-    components: { HeaderPrice }
+    components: { HeaderPrice, ForgottenProducts }
 }
 
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
 #PageWrapper {
   @include column;
