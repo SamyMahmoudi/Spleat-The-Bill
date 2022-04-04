@@ -1,12 +1,11 @@
 <template>
-  <div @click="addProduct" class="product">
+  <div @click="addProduct" :class="[{ disabled : isNoQuantity }, 'product']">
     <div class="product-heading">
       <img :src="'/data/img/' + productImg" alt="Icon restaurant product">
-      <span class="product-quantity">{{ productQuantity }}</span>
+      <span class="product-quantity" v-if="productQuantity != 0">{{ productQuantity }}</span>
     </div>
     <h3 class="product-title">{{ productName }}</h3>
     <p class="product-footer">{{ productPrice }} €</p>
-    <p>{{productIndex}}</p>
   </div>
 </template>
 
@@ -22,29 +21,29 @@ export default {
   ],
   data() {
     return {
-      productQuantity: this.productAmount
+      productQuantity: this.productAmount,
+      isNoQuantity : false
     }
   },
   methods: {
     addProduct() {
 
       var product = {
-          id: this.productId,
-          name: this.productName,
-          quantity : this.productQuantity,
-          price: this.productPrice,
-          img: this.productImg,
+        id: this.productId,
+        name: this.productName,
+        price: this.productPrice,
+        img: this.productImg,
       };
-      if(this.productQuantity === 1) {
-        document.getElementsByClassName('product')[0].classList.add('disabled');
+
+      if(this.productQuantity >= 1) {
         this.productQuantity--;
         this.$store.commit('cart/add', product);
-      } else if(this.productQuantity === 0) {
-        return
-      } else {
-        this.productQuantity--;
-        this.$store.commit('cart/add', product);
+
+        if(this.productQuantity == 0) {
+          this.isNoQuantity = true
+        }
       }
+
     }
   },
 }

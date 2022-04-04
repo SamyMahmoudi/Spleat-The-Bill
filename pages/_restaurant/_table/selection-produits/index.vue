@@ -33,17 +33,9 @@
           :categories="categories"
           :show="showForgotten"/> -->
       </div>
-
-      <div v-for="item in items" :key="item.index" class="summary-content">
-        <div class="product-container">
-          <img :src="`/data/img/${item.product.img}`" alt="icon item">
-        </div>
-      </div>
-      <p>{{totalPrice}}</p>
     </main>
 
-    <!-- panier -->
-    <!-- <Panier /> -->
+    <Panier />
 
   </div>
 </template>
@@ -70,7 +62,7 @@ export default {
                 table: "",
                 menu: "",
             },
-            testModel: "",
+            isProducts : false,
             categories: [],
             billTotalPrice: "",
             orderedProducts: [],
@@ -80,14 +72,6 @@ export default {
     },
     mounted() {
         this.get_data();
-    },
-    computed: {
-      items() {
-        return this.$store.state.cart.items;
-      },
-      totalPrice() {
-        return this.$store.getters.totalPrice;
-      }
     },
     methods: {
         get_data() {
@@ -126,7 +110,11 @@ export default {
 
   main {
     width: 95%;
-    margin: 0 0 0 5%;
+    margin: 0 0 60px 5%;
+
+    .wrapper-content {
+      padding-top: 2em;
+    }
   }
 }
 

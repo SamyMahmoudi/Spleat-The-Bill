@@ -1,19 +1,9 @@
 export const state = () => ({
     //store cart
+    totalPrice : 0,
+    isItems : false,
     items: [],
-    price : 0
 })
-
-export const getters = {
-    //get total price
-    totalPrice: state => {
-        let total = 0
-        state.items.forEach(item => {
-            total += item.price * item.quantity
-        })
-        return total
-    }
-}
 
 export const mutations = {
     //add item to cart
@@ -21,12 +11,17 @@ export const mutations = {
         state.items.push({
             product : payload,
         })
+        state.totalPrice += payload.price
+        state.isItems = true
     },
+
     //remove item from cart
-    remove(state, item) {
-        state.items.splice(state.items.indexOf(item), 1)
+    remove(state, payload) {
+        state.items.splice(state.items.indexOf(payload), 1)
+        state.totalPrice -= payload.price
+
+        if(state.items.length == 0) {
+          state.isItems = false
+        }
     }
-    //make the item disabled
-    // disable(state, item) {
-    // }
 }
