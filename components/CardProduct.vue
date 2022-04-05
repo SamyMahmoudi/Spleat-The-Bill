@@ -1,5 +1,5 @@
 <template>
-  <div @click="addProduct" :class="[{ disabled : isNoQuantity }, 'product']">
+  <div @click="addProduct" :class="[{ disabled : productQuantity == 0 }, 'product']">
     <div class="product-heading">
       <img :src="'/data/img/' + productImg" alt="Icon restaurant product">
       <span class="product-quantity" v-if="productQuantity != 0">{{ productQuantity }}</span>
@@ -17,35 +17,43 @@ export default {
     'productImg',
     'productAmount',
     'productPrice',
-    'productName'
+    'productName',
+    'productCategory'
   ],
   data() {
     return {
-      productQuantity: this.productAmount,
-      isNoQuantity : false
+     theQuantity : null
     }
   },
   methods: {
     addProduct() {
 
       var product = {
+        index : this.productIndex,
         id: this.productId,
         name: this.productName,
         price: this.productPrice,
         img: this.productImg,
+        category: this.productCategory,
+        amount : 1
       };
 
-      if(this.productQuantity >= 1) {
-        this.productQuantity--;
+      if(this.theQuantity >= 1) {
         this.$store.commit('cart/add', product);
-
-        if(this.productQuantity == 0) {
-          this.isNoQuantity = true
-        }
       }
 
     }
   },
+
+  computed : {
+    productQuantity() {
+      let actualProduct = this.$store.state.cart.allItems[this.productCategory].filter(
+          product => product.id == this.productId
+        )
+      this.theQuantity = actualProduct[0].amount
+      return actualProduct[0].amount
+    }
+  }
 }
 </script>
 

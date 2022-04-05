@@ -1,7 +1,7 @@
 <template>
   <div class="product">
 
-    <span class="quantity">0</span>
+    <span class="quantity">{{ productAmount }}</span>
     <img :src="'/data/img/' + productImg" alt="Icon restaurant product">
 
     <span class="cross-icon" @click="removeProduct()">
@@ -14,9 +14,11 @@
 <script>
 export default {
   props : [
+    'productAmount',
     'productImg',
-    'productIndex',
-    'productPrice'
+    'productPrice',
+    'productCategory',
+    'productId'
   ],
 
   methods : {
@@ -24,7 +26,8 @@ export default {
 
       var product = {
         price : this.productPrice,
-        index : this.productIndex
+        category : this.productCategory,
+        id : this.productId
       }
 
       this.$store.commit('cart/remove', product);

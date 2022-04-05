@@ -3,35 +3,7 @@
         <HeaderRecap />
 
         <h2 class="title">Mon repas</h2>
-        <div class="product-container">
-            <CardProduct
-                :productImg="iconBoisson"
-                :productName="'Boisson'"
-                :productAmount="2"
-                :productPrice="2.75"
-                class="product-card"/>
-            
-            <CardProduct
-                :productImg="iconPlat"
-                :productName="'Plat'"
-                :productAmount="2"
-                :productPrice="8"
-                class="product-card"/>
 
-            <CardProduct
-                :productImg="iconPlat"
-                :productName="'Plat'"
-                :productAmount="1"
-                :productPrice="9"
-                class="product-card"/>
-
-            <div class="add-product">
-                <div class="add-container">
-                    <span class="add-icon">&#43;</span>
-                </div>
-                <h3 class="add-text">Ajouter un produit</h3>
-            </div>
-        </div>
     </div>
 </template>
 
@@ -83,7 +55,7 @@ export default {
     }
 }
 
-.add 
+.add
 {
     &-product {
         width: 160px;

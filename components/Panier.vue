@@ -2,24 +2,30 @@
     <div class="panier-container" v-if="isProducts">
 
         <div class="all-products">
-          <CardProductThumbnail v-for="(item, index) in products"
+          <CardProductThumbnail v-for="item in products"
             :key="item.product.name"
             :productImg="item.product.img"
             :productPrice="item.product.price"
-            :productIndex="index"
+            :productCategory="item.product.category"
+            :productAmount="item.product.amount"
+            :productId="item.product.id"
           />
         </div>
 
-        <NuxtLink :to="`/`" tag="button" class="btn btn-fill">
+        <NuxtLink :to="`${fullPath}/recapitulatif`" class="btn btn-fill">
           Voir le récapitulatif : {{ totalPrice }} €
         </NuxtLink>
+
     </div>
 </template>
 
 <script>
 export default {
-
   computed : {
+    fullPath() {
+      return  "/" + this.$route.params.restaurant + "/" + this.$route.params.table
+    },
+
     products() {
       return this.$store.state.cart.items;
     },

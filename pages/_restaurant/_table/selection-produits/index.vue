@@ -15,12 +15,14 @@
         <div v-for="category in categories" :key="category.id" class="category-item">
           <h2>{{ category.name }}</h2>
           <div class="product-container">
-            <CardProduct v-for="product in get_category_products(category.name)"
+            <CardProduct v-for="(product, index) in get_category_products(category.name)"
               :productId="product.id"
               :productImg="category.picture"
               :productName="product.name"
               :productAmount="product.amount"
               :productPrice="product.price"
+              :productCategory='category.name'
+              :productIndex='index'
               class="product-card"
               :key="product.id"/>
           </div>
@@ -83,6 +85,9 @@ export default {
             this.restaurantFound.table = getTable[0];
             var getProducts = this.restaurantFound.table.bill.bought_products;
             this.orderedProducts = getProducts[0];
+
+            this.$store.commit('cart/get', this.orderedProducts);
+
             //get total price
             this.billTotalPrice = this.restaurantFound.table.bill.total_price;
             //get all categories
@@ -95,8 +100,7 @@ export default {
             });
         },
         get_category_products(category) {
-            var getProducts = this.orderedProducts[category];
-            return getProducts;
+          return this.$store.state.cart.allItems[category]
         }
     },
 }
