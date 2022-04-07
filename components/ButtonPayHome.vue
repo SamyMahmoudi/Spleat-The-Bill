@@ -31,7 +31,7 @@ export default {
 
 <style lang="scss">
   .disabled {
-    background-color: gray;
-    border: grey;
+    background-color: gray !important;
+    border: grey !important;
   }
 </style>
