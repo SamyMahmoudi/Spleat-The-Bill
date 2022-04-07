@@ -18,7 +18,7 @@
           <div class="product-container">
             <CardProduct v-for="(product, index) in get_category_products(category.name)"
               :productId="product.id"
-              :productImg="category.picture"
+              :productImg="product.picture"
               :productName="product.name"
               :productAmount="product.amount"
               :productPrice="product.price"
