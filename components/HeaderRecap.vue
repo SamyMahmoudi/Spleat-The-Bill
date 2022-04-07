@@ -4,7 +4,7 @@
         <div class="header-text">
             <h3 class="title">Récapitulatif</h3>
             <p class="text">Je dois régler</p>
-            <h2 class="price">21,50 €</h2>
+            <h2 class="price">{{ totalPrice }} €</h2>
         </div>
     </div>
 </template>
@@ -12,6 +12,9 @@
 <script>
 export default {
     name: "HeaderRecap",
+    props: [
+        'totalPrice'
+    ]
 }
 </script>
 

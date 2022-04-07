@@ -11,6 +11,7 @@
 
     <!-- content -->
     <main>
+
       <div class="wrapper-content">
         <div v-for="category in categories" :key="category.id" class="category-item">
           <h2>{{ category.name }}</h2>
