@@ -11,13 +11,14 @@
 
     <!-- content -->
     <main>
+
       <div class="wrapper-content">
         <div v-for="category in categories" :key="category.id" class="category-item">
           <h2>{{ category.name }}</h2>
           <div class="product-container">
             <CardProduct v-for="(product, index) in get_category_products(category.name)"
               :productId="product.id"
-              :productImg="category.picture"
+              :productImg="product.picture"
               :productName="product.name"
               :productAmount="product.amount"
               :productPrice="product.price"
