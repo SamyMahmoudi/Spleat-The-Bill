@@ -74,6 +74,9 @@ export default {
     },
     mounted() {
         this.get_data();
+        if(this.restaurantFound.table.active === false) {
+          this.$router.push('/error-page')
+        };
     },
     methods: {
         get_data() {
