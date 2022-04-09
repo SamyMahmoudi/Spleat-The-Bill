@@ -1,8 +1,23 @@
 <template>
     <div id="PageWrapper">
-        <HeaderRecap />
+        <HeaderRecap :totalPrice="totalPrice"/>
 
         <h2 class="title">Mon repas</h2>
+        <div class="product-container">
+        <CardProductRecap v-for="product in this.$store.state.cart.items"
+            :productId="product.product.id"
+            :productImg="product.product.img"
+            :productName="product.product.name"
+            :productAmount="product.product.amount"
+            :productPrice="product.product.price"
+            :productCategory="product.product.category"
+            :productIndex='product.product.index'
+            class="product-card"
+            :key="product.product.id"/>
+        </div>
+        <NuxtLink :to="`${fullPath}/payment`" class="btn btn-fill">
+          Payer {{ totalPrice }} €
+        </NuxtLink>
 
     </div>
 </template>
@@ -36,6 +51,14 @@ export default {
               table: '',
               menu: '',
             },
+        }
+    },
+    computed: {
+        fullPath() {
+            return  "/" + this.$route.params.restaurant + "/" + this.$route.params.table
+        },
+        totalPrice() {
+            return this.$store.state.cart.totalPrice
         }
     },
 
@@ -85,8 +108,8 @@ export default {
         padding: 10px;
     }
     &-card {
-        padding: 10px 20px;
-        width: 160px;
+        // padding: 10px 20px;
+        width: 120px;
         box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
         margin: 10px;
         text-align: center;
