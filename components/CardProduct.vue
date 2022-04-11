@@ -65,13 +65,15 @@ export default {
   .product
   {
     cursor: pointer;
-    min-width: 150px;
+    min-width: 120px;
+    max-width: 120px;
     box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
-    padding: 0.5em 1em 0;
+    padding: 1em 1em 0;
     text-align: center;
-    border-radius: 10px;
+    border-radius: 8px;
     position: relative;
     margin-right: 20px;
+    border: solid 0.5px hsla(0, 0%, 44%, 0.1);
 
     .cross-icon {
         font-size: 1em  ;
@@ -103,7 +105,7 @@ export default {
       position: absolute;
       background: $c--primary;
       bottom: 0px;
-      right: 0;
+      right: 0px;
       width: 20px;
       height: 20px;
       border-radius: 100%;

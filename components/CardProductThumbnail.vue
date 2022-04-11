@@ -1,10 +1,10 @@
 <template>
-  <div class="product">
+  <div class="product" @click="removeProduct()">
 
     <span class="quantity">{{ productAmount }}</span>
     <img :src="'/data/img/' + productImg" alt="Icon restaurant product">
 
-    <span class="cross-icon" @click="removeProduct()">
+    <span class="cross-icon">
       &#10006;
     </span>
 
