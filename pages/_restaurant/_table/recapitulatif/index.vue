@@ -1,6 +1,10 @@
 <template>
     <div id="PageWrapper">
-        <HeaderRecap :totalPrice="totalPrice"/>
+        <HeaderRecap
+        :totalPrice="totalPrice"
+        :paramsRestaurant="paramsOptions.theRestaurantId"
+        :paramsTable="paramsOptions.theTableId"
+        />
 
         <h2 class="title">Mon repas</h2>
         <div class="product-container">
