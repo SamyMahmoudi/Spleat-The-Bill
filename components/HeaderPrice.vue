@@ -6,8 +6,8 @@
         </div>
 
         <div class="header-links">
-            <nuxt-link :to="`/`" tag="button" class="btn btn-regular price-link">Régler ma part</nuxt-link>
-            <nuxt-link :to="`/`" tag="button" class="btn disabled" disabled>Partager l'addition</nuxt-link>
+            <nuxt-link :to="`/${idRestaurant}/${idTable}/selection-produits`" tag="button" class="btn btn-regular price-link">Régler ma part</nuxt-link>
+            <nuxt-link :to="`/${idRestaurant}/${idTable}/partager-addition`" tag="button" class="btn btn-regular price-link">Partager l'addition</nuxt-link>
         </div>
     </div>
 </template>
@@ -71,14 +71,13 @@ export default {
                 width: 40%;
                 border: none;
                 font-size: 14px;
-            }
-
-            .disabled {
-                width: 40%;
-                background-color: transparent;
-                border: none;
-                color: rgba($color: #ffffff, $alpha: 0.5);
-                font-size: 14px;
+                &-disabled {
+                    width: 40%;
+                    background-color: transparent;
+                    border: none;
+                    color: rgba($color: #ffffff, $alpha: 0.5);
+                    font-size: 14px;
+                }
             }
         }
     }

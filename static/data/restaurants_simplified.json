@@ -10,6 +10,7 @@
                     "id": 1,
                     "number": 1,
                     "active": true,
+                    "customers" : 4,
                     "bill": {
                         "total_price": 46.99,
                         "total_items": 3,
@@ -70,6 +71,7 @@
                     "id": 5,
                     "number": 3,
                     "active": true,
+                    "customers" : 2,
                     "bill": {
                         "total_price": 13.50,
                         "total_items": 2,
@@ -129,6 +131,7 @@
                     "id": 1,
                     "number": 1,
                     "active": true,
+                    "customers" : 4,
                     "bill": {
                         "total_price": 32.75,
                         "total_items": 3,
@@ -175,6 +178,7 @@
                     "id": 3,
                     "number": 3,
                     "active": true,
+                    "customers" : 4,
                     "bill": {
                         "total_price": 59,
                         "total_items": 6,
@@ -264,6 +268,7 @@
                     "id": 10,
                     "number": 19,
                     "active": true,
+                    "customers" : 6,
                     "bill": {
                         "total_price": 65.43,
                         "total_items": 8,
