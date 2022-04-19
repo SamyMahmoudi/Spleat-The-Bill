@@ -113,12 +113,6 @@ export default {
 #PageWrapper {
   height: 100vh;
   @include column;
-
-  main {
-    flex: 1;
-    width: 90%;
-    margin: 0 auto;
-  }
 }
 
 .wrapper-content {

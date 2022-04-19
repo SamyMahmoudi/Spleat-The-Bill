@@ -115,8 +115,6 @@ export default {
   background: white;
 
   main {
-    width: 90%;
-    margin: auto;
 
     h1 {
       padding: 60px 0 30px;

@@ -91,11 +91,6 @@ export default {
 
 #PageWrapper {
     @include column;
-
-    main {
-        width: 90%;
-        margin: 0 auto;
-    }
 }
 
 .title {

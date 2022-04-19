@@ -15,9 +15,7 @@ export default {
 <style scoped lang="scss">
     .header-container {
         @include center-total;
-        background-color: $c--secondary;
         padding: 2em 0;
-        border-radius:0 0 20px 20px;
         img {
             width: auto;
             height: 100px;

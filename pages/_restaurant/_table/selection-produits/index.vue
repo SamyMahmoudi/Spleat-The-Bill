@@ -12,7 +12,7 @@
     <!-- content -->
     <main>
 
-      <div class="wrapper-content">
+      <div>
         <div v-for="category in categories" :key="category.id" class="category-item">
           <h2>{{ category.name }}</h2>
           <div class="product-container">
@@ -115,15 +115,6 @@ export default {
 
 #PageWrapper {
   @include column;
-
-  main {
-    width: 95%;
-    margin: 0 0 60px 5%;
-
-    .wrapper-content {
-      padding-top: 2em;
-    }
-  }
 }
 
 .category-item
