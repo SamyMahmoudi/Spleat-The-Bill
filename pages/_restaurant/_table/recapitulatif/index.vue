@@ -8,16 +8,20 @@
 
         <h2 class="title">Mon repas</h2>
         <div class="product-container">
-        <CardProductRecap v-for="product in this.$store.state.cart.items"
-            :productId="product.product.id"
-            :productImg="product.product.img"
-            :productName="product.product.name"
-            :productAmount="product.product.amount"
-            :productPrice="product.product.price"
-            :productCategory="product.product.category"
-            :productIndex='product.product.index'
-            class="product-card"
-            :key="product.product.id"/>
+            <CardProductRecap v-for="product in storeItems"
+                :productId="product.product.id"
+                :productImg="product.product.img"
+                :productName="product.product.name"
+                :productAmount="product.product.amount"
+                :productPrice="product.product.price"
+                :productCategory="product.product.category"
+                :productIndex='product.product.index'
+                class="product-card"
+                :key="product.product.id"/>
+            <div class="add-btn">
+                <img :to="`selection-produits`" src="/images/add-logo-recap.png" alt="add product logo">
+                <nuxt-link class="add-click" :to="`selection-produits`">ajouter un produit</nuxt-link>
+            </div>
         </div>
         <button
             @click="checkItems" 
@@ -71,6 +75,13 @@ export default {
         },
         totalPrice() {
             return this.$store.state.cart.totalPrice
+        },
+        storeItems() {
+            if(this.$store.state.cart.items.length != 0) {
+                return this.$store.state.cart.items
+            }else {
+                this.$router.replace('selection-produits')
+            }
         }
     },
     mounted() {
@@ -79,6 +90,7 @@ export default {
             this.$router.push('/error-page')
         };
     },
+
     methods: {
         get_data() {
             // get the data of the restaurant which its corresponds to the params
@@ -173,6 +185,24 @@ export default {
     &-text {
         width: 70%;
         text-align: center;
+    }
+}
+.add-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    img {
+        width: 33px;
+        height: 33px;
+    }
+    .add-click {
+        color: $c--primary;
+        font-family: $f--content;
+        text-align: center;
+        width: 70%;
     }
 }
 </style>
