@@ -1,12 +1,13 @@
 <template>
     <div id="PageWrapper">
         <HeaderRecap
-        :totalPrice="totalPrice"
-        :paramsRestaurant="paramsOptions.theRestaurantId"
-        :paramsTable="paramsOptions.theTableId"
+            :totalPrice="totalPrice"
+            :paramsRestaurant="paramsOptions.theRestaurantId"
+            :paramsTable="paramsOptions.theTableId"
         />
 
         <h2 class="title">Mon repas</h2>
+
         <div class="product-container">
             <CardProductRecap v-for="product in storeItems"
                 :productId="product.product.id"
@@ -85,14 +86,14 @@ export default {
         }
     },
     mounted() {
-        this.get_data();
+        this.getData();
         if(this.restaurantFound.table.active === false) {
             this.$router.push('/error-page')
         };
     },
 
     methods: {
-        get_data() {
+        getData() {
             // get the data of the restaurant which its corresponds to the params
             var getRestaurant = this.allRestaurants.filter(element => element.id == this.paramsOptions.theRestaurantId)
             this.restaurantFound.restaurant = getRestaurant[0];
@@ -181,6 +182,8 @@ export default {
     }
 }
 .add-btn {
+    width: 120px;
+    height: 156px;
     display: flex;
     flex-direction: column;
     align-items: center;
