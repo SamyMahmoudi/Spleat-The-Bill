@@ -1,0 +1,12 @@
+.header-container {
+    background-color: $c--secondary;
+    border-radius: 0 0 20px 20px;
+    flex-direction: column;
+    min-height: 20vh;
+}
+
+main {
+    width: 90%;
+    margin: 30px auto 0;
+    flex: 1;
+}

@@ -24,11 +24,8 @@ export default {
 
 <style scoped lang="scss">
     .header-container {
-        height: 18vh;
         @include center-align;
         justify-content: flex-end;
-        flex-direction: column;
-        background-color: $c--secondary;
 
         .arrow-previous {
           fill: white;
