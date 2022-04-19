@@ -18,7 +18,7 @@
           <div class="product-container">
             <CardProduct v-for="(product, index) in get_category_products(category.name)"
               :productId="product.id"
-              :productImg="category.picture"
+              :productImg="product.picture"
               :productName="product.name"
               :productAmount="product.amount"
               :productPrice="product.price"
@@ -75,6 +75,9 @@ export default {
     },
     mounted() {
         this.get_data();
+        if(this.restaurantFound.table.active === false) {
+          this.$router.push('/error-page')
+        };
     },
     methods: {
         get_data() {

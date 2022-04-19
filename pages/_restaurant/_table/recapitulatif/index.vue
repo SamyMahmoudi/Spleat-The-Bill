@@ -1,6 +1,10 @@
 <template>
     <div id="PageWrapper">
-        <HeaderRecap :totalPrice="totalPrice"/>
+        <HeaderRecap
+        :totalPrice="totalPrice"
+        :paramsRestaurant="paramsOptions.theRestaurantId"
+        :paramsTable="paramsOptions.theTableId"
+        />
 
         <h2 class="title">Mon repas</h2>
         <div class="product-container">
@@ -31,12 +35,35 @@
 </template>
 
 <script>
+  // import fake datas
+  import {
+    restaurants
+  } from '~/static/data/restaurants.json';
+
 export default {
+
+    asyncData({params})
+    {
+      return {
+        allRestaurants: restaurants,
+        // get the params from the URL
+        paramsOptions: {
+          theRestaurantId: params.restaurant,
+          theTableId: params.table,
+        },
+      }
+    },
+
     data() {
         return {
             iconPlat: "icon-plat.png",
             iconBoisson: "icon-boisson.png",
             showForgotten : false,
+            restaurantFound: {
+              restaurant: '',
+              table: '',
+              menu: '',
+            },
         }
     },
     computed: {
@@ -62,6 +89,25 @@ export default {
             }
         }
     },
+
+    mounted() {
+      this.get_data();
+      if(this.restaurantFound.table.active === false) {
+        this.$router.push('/error-page')
+      };
+    },
+
+    methods: {
+      get_data() {
+        // get the data of the restaurant which its corresponds to the params
+        var getRestaurant = this.allRestaurants.filter(element => element.id == this.paramsOptions.theRestaurantId)
+        this.restaurantFound.restaurant = getRestaurant[0];
+
+        // get the data of the table which its corresponds to the params
+        var getTable = getRestaurant[0].tables.filter(element => element.id == this.paramsOptions.theTableId)
+        this.restaurantFound.table = getTable[0];
+      }
+    }
 }
 </script>
 

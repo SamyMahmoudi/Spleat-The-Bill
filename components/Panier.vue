@@ -43,7 +43,7 @@ export default {
 
 <style lang="scss" scoped>
 .panier-container {
-    padding-top: 30px;
+    padding-top: 15px;
     border-radius: 10px 10px 0 0;
     width: 100%;
     position: sticky;
@@ -53,6 +53,7 @@ export default {
     .btn {
       width: 90%;
       margin-bottom: 30px;
+      padding: 0.7em 0;
     }
 
     .all-products {
@@ -60,7 +61,7 @@ export default {
       overflow-x: scroll;
       overflow-y: hidden;
       -webkit-overflow-scrolling: touch;
-      margin-bottom: 30px;
+      margin-bottom: 10px;
       &::-webkit-scrollbar {
         display: none;
       }
