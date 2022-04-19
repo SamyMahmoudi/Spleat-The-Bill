@@ -14,7 +14,7 @@
 
 <script>
 export default {
-    // add props
+
     props : [
       'tableNumber',
       'totalPrice',
@@ -22,9 +22,11 @@ export default {
       'idTable'
     ]
 }
+
 </script>
 
 <style scoped lang="scss">
+
     .header-container {
         display: flex;
         padding: 2em 0 1em;
@@ -49,7 +51,7 @@ export default {
                 color: white;
             }
             h3 {
-              margin-bottom: 1em;
+                margin-bottom: 1em;
             }
             .price {
                 font-size: 30px;

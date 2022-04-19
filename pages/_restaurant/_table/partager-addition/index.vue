@@ -1,12 +1,11 @@
 <template>
   <div id="page-partagerAddition">
 
-    <!-- page header  -->
     <HeaderPrice
       :idTable="restaurantFound.table.id"
       :idRestaurant="restaurantFound.restaurant.id"
       :tableNumber="restaurantFound.table.number"
-      :totalPrice="billTotalPrice"
+      :totalPrice="totalPrice"
     />
 
     <main>
@@ -38,84 +37,81 @@
 import {restaurants} from '~/static/data/restaurants.json';
 
 export default {
-    asyncData({ params }) {
-        return {
-            allRestaurants: restaurants,
-            // get the params from the URL
-            paramsOptions: {
-                theRestaurantId: params.restaurant,
-                theTableId: params.table,
-            },
-        };
+  asyncData({ params }) {
+    return {
+      allRestaurants: restaurants,
+      // get the params from the URL
+      paramsOptions: {
+        theRestaurantId: params.restaurant,
+        theTableId: params.table,
+      },
+    };
+  },
+  data() {
+    return {
+      restaurantFound: {
+        restaurant: "",
+        table: "",
+      },
+      totalPrice: "",
+      calculatePrice : null,
+      billCalculate : null,
+      numberCustomers : 1,
+    };
+  },
+  mounted() {
+    this.get_data();
+    if(this.restaurantFound.table.active === false) {
+      this.$router.push('/error-page')
+    };
+  },
+  methods: {
+    get_data() {
+      // get the data of the restaurant which corresponds to the params
+      var getRestaurant = this.allRestaurants.filter(element => element.id == this.paramsOptions.theRestaurantId);
+      this.restaurantFound.restaurant = getRestaurant[0];
+
+      // get the data of the table which corresponds to the params
+      var getTable = getRestaurant[0].tables.filter(element => element.id == this.paramsOptions.theTableId);
+      this.restaurantFound.table = getTable[0];
+
+      this.totalPrice = this.restaurantFound.table.bill.total_price;
+
+      let customerPrice = this.totalPrice / this.restaurantFound.table.customers
+      this.calculatePrice = Math.round(customerPrice * 100) / 100
+
+      this.billCalculate = this.calculatePrice
     },
-    data() {
-        return {
-            restaurantFound: {
-                restaurant: "",
-                table: "",
-            },
-            billTotalPrice: "",
-            calculatePrice : null,
-            billCalculate : null,
-            numberCustomers : 1,
-        };
+
+    removeCustomer() {
+      if(this.numberCustomers >= 2) {
+        this.numberCustomers --;
+        this.billCalculate -= Math.round(this.calculatePrice * 100) / 100
+      }
     },
-    mounted() {
-        this.get_data();
-        if(this.restaurantFound.table.active === false) {
-          this.$router.push('/error-page')
-        };
-    },
-    methods: {
-        get_data() {
-            // get the data of the restaurant which its corresponds to the params
-            var getRestaurant = this.allRestaurants.filter(element => element.id == this.paramsOptions.theRestaurantId);
-            this.restaurantFound.restaurant = getRestaurant[0];
-            // get the data of the table which its corresponds to the params
-            var getTable = getRestaurant[0].tables.filter(element => element.id == this.paramsOptions.theTableId);
-            this.restaurantFound.table = getTable[0];
 
-            //get total price
-            this.billTotalPrice = this.restaurantFound.table.bill.total_price;
-
-            let customerPrice = this.billTotalPrice / this.restaurantFound.table.customers
-            this.calculatePrice = Math.round(customerPrice * 100) / 100
-
-            this.billCalculate = this.calculatePrice
-        },
-
-        removeCustomer() {
-          if(this.numberCustomers >= 2) {
-            this.numberCustomers --;
-            this.billCalculate -= Math.round(this.calculatePrice * 100) / 100
-          }
-        },
-
-        addCustomer() {
-          if(this.numberCustomers <  this.restaurantFound.table.customers) {
-            this.numberCustomers ++;
-            if(this.numberCustomers == this.restaurantFound.table.customers) {
-              this.billCalculate = this.billTotalPrice
-            } else {
-              this.billCalculate += this.calculatePrice
-            }
-
-          }
+    addCustomer() {
+      if(this.numberCustomers <  this.restaurantFound.table.customers) {
+        this.numberCustomers ++;
+        if(this.numberCustomers == this.restaurantFound.table.customers) {
+          this.billCalculate = this.totalPrice
+        } else {
+          this.billCalculate += this.calculatePrice
         }
-    },
+      }
+    }
+  }
 }
 
 </script>
 
 <style lang="scss" scoped>
 
-#page-partagerAddition
-{
+#page-partagerAddition {
   height: 100vh;
   background: white;
 
   main {
-
     h1 {
       padding: 60px 0 30px;
       font-size: 22px;
@@ -141,8 +137,7 @@ export default {
   }
 }
 
-.share-bill
-{
+.share-bill {
   border-radius: 8px;
   box-shadow: -5px 10px 15px -3px rgba(0,0,0,0.1);
   display: flex;
@@ -183,6 +178,5 @@ export default {
     font-family: $f--content;
   }
 }
-
 
 </style>
