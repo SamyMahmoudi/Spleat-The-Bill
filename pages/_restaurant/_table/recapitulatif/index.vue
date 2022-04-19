@@ -8,52 +8,64 @@
 
         <h2 class="title">Mon repas</h2>
         <div class="product-container">
-        <CardProductRecap v-for="product in this.$store.state.cart.items"
-            :productId="product.product.id"
-            :productImg="product.product.img"
-            :productName="product.product.name"
-            :productAmount="product.product.amount"
-            :productPrice="product.product.price"
-            :productCategory="product.product.category"
-            :productIndex='product.product.index'
-            class="product-card"
-            :key="product.product.id"/>
+            <CardProductRecap v-for="product in storeItems"
+                :productId="product.product.id"
+                :productImg="product.product.img"
+                :productName="product.product.name"
+                :productAmount="product.product.amount"
+                :productPrice="product.product.price"
+                :productCategory="product.product.category"
+                :productIndex='product.product.index'
+                class="product-card"
+                :key="product.product.id"/>
+            <div class="add-btn">
+                <img :to="`selection-produits`" src="/images/add-logo-recap.png" alt="add product logo">
+                <nuxt-link class="add-click" :to="`selection-produits`">ajouter un produit</nuxt-link>
+            </div>
         </div>
-        <NuxtLink :to="`${fullPath}/payment`" class="btn btn-fill">
-          Payer {{ totalPrice }} €
-        </NuxtLink>
-
+        <button
+            @click="checkItems" 
+            class="btn btn-fill">Payer {{ totalPrice }} €
+        </button>
+        <ForgottenProducts
+            v-if="showForgotten"
+            @closed="showForgotten = !showForgotten; forgotItems = []"
+            :products="forgotItems"
+            :show="showForgotten"
+        />
     </div>
 </template>
 
 <script>
   // import fake datas
-  import {
-    restaurants
-  } from '~/static/data/restaurants.json';
+    import {
+        restaurants
+    } from '~/static/data/restaurants.json';
 
 export default {
 
     asyncData({params})
     {
-      return {
-        allRestaurants: restaurants,
-        // get the params from the URL
-        paramsOptions: {
-          theRestaurantId: params.restaurant,
-          theTableId: params.table,
-        },
-      }
+        return {
+            allRestaurants: restaurants,
+            // get the params from the URL
+            paramsOptions: {
+                theRestaurantId: params.restaurant,
+                theTableId: params.table,
+            },
+        }
     },
 
     data() {
         return {
             iconPlat: "icon-plat.png",
             iconBoisson: "icon-boisson.png",
+            showForgotten : false,
+            forgotItems: [],
             restaurantFound: {
-              restaurant: '',
-              table: '',
-              menu: '',
+                restaurant: '',
+                table: '',
+                menu: '',
             },
         }
     },
@@ -63,27 +75,48 @@ export default {
         },
         totalPrice() {
             return this.$store.state.cart.totalPrice
+        },
+        storeItems() {
+            if(this.$store.state.cart.items.length != 0) {
+                return this.$store.state.cart.items
+            }else {
+                this.$router.replace('selection-produits')
+            }
         }
     },
-
     mounted() {
-      this.get_data();
-      if(this.restaurantFound.table.active === false) {
-        this.$router.push('/error-page')
-      };
+        this.get_data();
+        if(this.restaurantFound.table.active === false) {
+            this.$router.push('/error-page')
+        };
     },
 
     methods: {
-      get_data() {
-        // get the data of the restaurant which its corresponds to the params
-        var getRestaurant = this.allRestaurants.filter(element => element.id == this.paramsOptions.theRestaurantId)
-        this.restaurantFound.restaurant = getRestaurant[0];
+        get_data() {
+            // get the data of the restaurant which its corresponds to the params
+            var getRestaurant = this.allRestaurants.filter(element => element.id == this.paramsOptions.theRestaurantId)
+            this.restaurantFound.restaurant = getRestaurant[0];
 
-        // get the data of the table which its corresponds to the params
-        var getTable = getRestaurant[0].tables.filter(element => element.id == this.paramsOptions.theTableId)
-        this.restaurantFound.table = getTable[0];
-      }
-    }
+            // get the data of the table which its corresponds to the params
+            var getTable = getRestaurant[0].tables.filter(element => element.id == this.paramsOptions.theTableId)
+            this.restaurantFound.table = getTable[0];
+        },
+        checkItems() {
+            var allItems = this.$store.state.cart.allItems
+            for(const category in allItems) {
+                allItems[category].forEach(product => {
+                    if(product.amount != 0) {
+                        this.forgotItems.push(product)
+                    }
+                })
+            }
+            if (this.forgotItems.length > 0) {
+                this.showForgotten = true;
+            } else {
+                this.$router.replace('payment')
+            }
+        }
+    },
 }
 </script>
 
@@ -152,6 +185,22 @@ export default {
         text-align: center;
     }
 }
+.add-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 
-
+    img {
+        width: 33px;
+        height: 33px;
+    }
+    .add-click {
+        color: $c--primary;
+        font-family: $f--content;
+        text-align: center;
+        width: 70%;
+    }
+}
 </style>
