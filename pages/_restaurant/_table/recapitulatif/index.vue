@@ -19,16 +19,14 @@
             class="product-card"
             :key="product.product.id"/>
         </div>
-        <NuxtLink 
-            :to="`${fullPath}/payment`" 
-            @click.native="checkItems" 
+        <button
+            @click="checkItems" 
             class="btn btn-fill">Payer {{ totalPrice }} €
-        </NuxtLink>
+        </button>
         <ForgottenProducts
             v-if="showForgotten"
-            @closed="showForgotten = !showForgotten"
-            :products="get_category_products('plats')"
-            :categories="categories"
+            @closed="showForgotten = !showForgotten; forgotItems = []"
+            :products="forgotItems"
             :show="showForgotten"
         />
     </div>
@@ -36,22 +34,22 @@
 
 <script>
   // import fake datas
-  import {
-    restaurants
-  } from '~/static/data/restaurants.json';
+    import {
+        restaurants
+    } from '~/static/data/restaurants.json';
 
 export default {
 
     asyncData({params})
     {
-      return {
-        allRestaurants: restaurants,
-        // get the params from the URL
-        paramsOptions: {
-          theRestaurantId: params.restaurant,
-          theTableId: params.table,
-        },
-      }
+        return {
+            allRestaurants: restaurants,
+            // get the params from the URL
+            paramsOptions: {
+                theRestaurantId: params.restaurant,
+                theTableId: params.table,
+            },
+        }
     },
 
     data() {
@@ -59,10 +57,11 @@ export default {
             iconPlat: "icon-plat.png",
             iconBoisson: "icon-boisson.png",
             showForgotten : false,
+            forgotItems: [],
             restaurantFound: {
-              restaurant: '',
-              table: '',
-              menu: '',
+                restaurant: '',
+                table: '',
+                menu: '',
             },
         }
     },
@@ -74,40 +73,40 @@ export default {
             return this.$store.state.cart.totalPrice
         }
     },
+    mounted() {
+        this.get_data();
+        if(this.restaurantFound.table.active === false) {
+            this.$router.push('/error-page')
+        };
+    },
     methods: {
+        get_data() {
+            // get the data of the restaurant which its corresponds to the params
+            var getRestaurant = this.allRestaurants.filter(element => element.id == this.paramsOptions.theRestaurantId)
+            this.restaurantFound.restaurant = getRestaurant[0];
+
+            // get the data of the table which its corresponds to the params
+            var getTable = getRestaurant[0].tables.filter(element => element.id == this.paramsOptions.theTableId)
+            this.restaurantFound.table = getTable[0];
+        },
         checkItems() {
-            console.log("is starting")
-            console.log(this.showForgotten)
             var allItems = this.$store.state.cart.allItems
             for(const category in allItems) {
-                console.log(allItems[category])
+                allItems[category].forEach(product => {
+                    if(product.amount != 0) {
+                        this.forgotItems.push(product)
+                    }
+                })
             }
-            if (allItems.length > 0) {
+            console.log(this.forgotItems)
+            if (this.forgotItems.length > 0) {
                 this.showForgotten = true;
             } else {
-                return
+                this.$router.replace('payment')
             }
+
         }
     },
-
-    mounted() {
-      this.get_data();
-      if(this.restaurantFound.table.active === false) {
-        this.$router.push('/error-page')
-      };
-    },
-
-    methods: {
-      get_data() {
-        // get the data of the restaurant which its corresponds to the params
-        var getRestaurant = this.allRestaurants.filter(element => element.id == this.paramsOptions.theRestaurantId)
-        this.restaurantFound.restaurant = getRestaurant[0];
-
-        // get the data of the table which its corresponds to the params
-        var getTable = getRestaurant[0].tables.filter(element => element.id == this.paramsOptions.theTableId)
-        this.restaurantFound.table = getTable[0];
-      }
-    }
 }
 </script>
 

@@ -10,8 +10,8 @@
         <h2 v-else>Il semblerait que des produits aient été oubliés !</h2>
         <div class="product-container">
           <!-- Temporary data to be replaced with forgotten products array -->
-          <CardProduct v-for="product in products"
-          :productImg="categories[1].picture"
+          <CardProductForgot v-for="product in products"
+          :productImg="product.picture"
           :productName="product.name"
           :productAmount="product.amount"
           :productPrice="product.price"
@@ -26,12 +26,11 @@
 
 <script>
 export default {
-  props : [
-    'products',
-    'categories',
-    'show'
-  ],
-  data() {
+    props: [
+        "products",
+        "show"
+    ],
+    data() {
         return {
             forgottenAmount: 1,
             showModal: this.show,
