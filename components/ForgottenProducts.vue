@@ -6,7 +6,7 @@
       <div class="forgotten-products">
         <hr class="header-line">
         <!-- Check the number of forgotten products to adjust plural or singular -->
-        <h2 v-if="forgottenAmount == 1">Il semblerait qu'un produit ait été oublié !</h2>
+        <h2 v-if="products.length == 1">Il semblerait qu'un produit ait été oublié !</h2>
         <h2 v-else>Il semblerait que des produits aient été oubliés !</h2>
         <div class="product-container">
           <!-- Temporary data to be replaced with forgotten products array -->
@@ -18,8 +18,8 @@
           class="product-card"
           :key="product.id"/>
         </div>
-        <a href="#" class="btn btn-fill">Ajouter les produits</a>
-        <a href="#" class="close-link" @click="$emit('closed')">Fermer</a>
+        <nuxt-link :to="`selection-produits`" class="btn btn-fill">Retour à la sélection</nuxt-link>
+        <a class="close-link" @click="$emit('closed')">Fermer</a>
       </div>
     </div>
 </template>
@@ -35,7 +35,7 @@ export default {
             forgottenAmount: 1,
             showModal: this.show,
         };
-    },
+    }
 }
 </script>
 

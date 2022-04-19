@@ -110,13 +110,11 @@ export default {
                     }
                 })
             }
-            console.log(this.forgotItems)
             if (this.forgotItems.length > 0) {
                 this.showForgotten = true;
             } else {
                 this.$router.replace('payment')
             }
-
         }
     },
 }
