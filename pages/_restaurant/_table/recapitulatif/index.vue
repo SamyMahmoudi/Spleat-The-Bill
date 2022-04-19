@@ -15,10 +15,18 @@
             class="product-card"
             :key="product.product.id"/>
         </div>
-        <NuxtLink :to="`${fullPath}/payment`" class="btn btn-fill">
-          Payer {{ totalPrice }} €
+        <NuxtLink 
+            :to="`${fullPath}/payment`" 
+            @click.native="checkItems" 
+            class="btn btn-fill">Payer {{ totalPrice }} €
         </NuxtLink>
-
+        <ForgottenProducts
+            v-if="showForgotten"
+            @closed="showForgotten = !showForgotten"
+            :products="get_category_products('plats')"
+            :categories="categories"
+            :show="showForgotten"
+        />
     </div>
 </template>
 
@@ -28,6 +36,7 @@ export default {
         return {
             iconPlat: "icon-plat.png",
             iconBoisson: "icon-boisson.png",
+            showForgotten : false,
         }
     },
     computed: {
@@ -37,7 +46,22 @@ export default {
         totalPrice() {
             return this.$store.state.cart.totalPrice
         }
-    }
+    },
+    methods: {
+        checkItems() {
+            console.log("is starting")
+            console.log(this.showForgotten)
+            var allItems = this.$store.state.cart.allItems
+            for(const category in allItems) {
+                console.log(allItems[category])
+            }
+            if (allItems.length > 0) {
+                this.showForgotten = true;
+            } else {
+                return
+            }
+        }
+    },
 }
 </script>
 
@@ -106,6 +130,4 @@ export default {
         text-align: center;
     }
 }
-
-
 </style>
