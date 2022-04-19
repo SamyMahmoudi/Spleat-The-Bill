@@ -9,10 +9,12 @@
       <div class="wrapper-content">
 
         <div class="text-content">
-          <h2> A très bientôt ! </h2>
+          <!-- display username -->
+          <h2> Merci <span class="username">{{ username }}</span> ! </h2>
           <!-- display the table's number -->
           <p>La table n°{{ restaurantFound.table.number }}</p>
           <p>a été réglé dans son intégralité</p>
+          <h2> A très bientôt ! </h2>
         </div>
 
         <img id="ValidationLogo" src="~/static/images/validation-logo.png" alt="Logo de Validation">
@@ -49,6 +51,7 @@
           table: '',
           menu: '',
         },
+        username: '',
       }
     },
 
@@ -68,7 +71,9 @@
         // get the data of the table which its corresponds to the params
         var getTable = getRestaurant[0].tables.filter(element => element.id == this.paramsOptions.theTableId)
         this.restaurantFound.table = getTable[0];
-      }
+
+        this.username = this.$store.state.authentication.name;
+      },
     }
   }
 
@@ -99,6 +104,11 @@
       h2 {
         font-weight: 400;
         padding-bottom: 15px;
+        padding-top: 15px;
+      }
+
+      .username {
+        font-weight: 700;
       }
     }
 

@@ -21,7 +21,7 @@
             v-model.trim="username" required>
 
           <!-- Modify the button's style when input is empty and call the redirection function when clicked -->
-          <button class="btn btn-fill" @click="redirect" :class="{ disabled : IsEmptyInput}" :disabled="IsEmptyInput">
+          <button class="btn btn-fill" @click="validAuthentication" :class="{ disabled : IsEmptyInput}" :disabled="IsEmptyInput">
             Continuer
           </button>
         </form>
@@ -87,11 +87,12 @@ export default {
     },
 
 
-    redirect() {
+    validAuthentication() {
+      this.$store.commit('authentication/getName', this.username);
       // Check that the input is not empty
       if(!this.IsEmptyInput) {
         // Change url without adding an history step and pass the username
-        this.$router.replace('selection-produits?name='+this.username)
+        this.$router.replace('selection-produits')
       }
     },
 
