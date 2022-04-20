@@ -6,7 +6,7 @@
         <div class="header-text">
             <h3 class="title">Récapitulatif</h3>
             <p class="text">Je dois régler</p>
-            <h2 class="price">{{ totalPrice }} €</h2>
+            <h2 class="price">{{ Math.round(totalPrice * 100) / 100 }} €</h2>
         </div>
     </div>
 </template>

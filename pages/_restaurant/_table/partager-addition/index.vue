@@ -83,13 +83,14 @@ export default {
       let customerPrice = this.totalPrice / this.restaurantFound.table.customers
       this.calculatePrice = Math.round(customerPrice * 100) / 100
 
-      this.billCalculate = this.calculatePrice
+      this.billCalculate = Math.round(this.calculatePrice * 100) / 100
     },
 
     removeCustomer() {
       if(this.numberCustomers >= 2) {
         this.numberCustomers --;
-        this.billCalculate -= Math.round(this.calculatePrice * 100) / 100
+        this.billCalculate -= this.calculatePrice
+        this.billCalculate = Math.round(this.billCalculate * 100) / 100
       }
     },
 
@@ -100,6 +101,7 @@ export default {
           this.billCalculate = this.totalPrice
         } else {
           this.billCalculate += this.calculatePrice
+          this.billCalculate = Math.round(this.billCalculate * 100) / 100
         }
       }
     }

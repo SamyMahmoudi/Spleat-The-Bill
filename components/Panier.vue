@@ -13,7 +13,7 @@
         </div>
 
         <NuxtLink :to="`${fullPath}/recapitulatif`" class="btn btn-fill">
-          Voir le récapitulatif : {{ totalPrice }} €
+          Voir le récapitulatif : {{ Math.round(totalPrice * 100) / 100 }} €
         </NuxtLink>
 
     </div>

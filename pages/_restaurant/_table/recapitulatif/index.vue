@@ -26,7 +26,7 @@
         </div>
         <button
             @click="checkItems" 
-            class="btn btn-fill">Payer {{ totalPrice }} €
+            class="btn btn-fill">Payer {{ Math.round(totalPrice * 100) / 100 }} €
         </button>
         <ForgottenProducts
             v-if="showForgotten"
