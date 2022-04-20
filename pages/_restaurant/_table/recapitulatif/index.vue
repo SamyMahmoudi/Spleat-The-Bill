@@ -20,7 +20,7 @@
                 class="product-card"
                 :key="product.product.id"/>
             <div class="add-btn">
-                <img :to="`selection-produits`" src="/images/add-logo-recap.png" alt="add product logo">
+                <nuxt-link :to="`selection-produits`"><img src="/images/add-logo-recap.png" alt="add product logo"></nuxt-link>
                 <nuxt-link class="add-click" :to="`selection-produits`">ajouter un produit</nuxt-link>
             </div>
         </div>
