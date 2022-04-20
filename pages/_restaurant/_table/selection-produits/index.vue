@@ -88,16 +88,17 @@ export default {
       // get the data of the restaurant which its corresponds to the params
       var getRestaurant = this.allRestaurants.filter(element => element.id == this.paramsOptions.theRestaurantId);
       this.restaurantFound.restaurant = getRestaurant[0];
+
       // get the data of the table which its corresponds to the params
       var getTable = getRestaurant[0].tables.filter(element => element.id == this.paramsOptions.theTableId);
       this.restaurantFound.table = getTable[0];
-      var getProducts = this.restaurantFound.table.bill.boughtProducts;
+      var getProducts = this.restaurantFound.table.bill.bought_products;
       this.orderedProducts = getProducts[0];
 
       this.$store.commit('cart/get', this.orderedProducts);
 
       //get total price
-      this.billTotalPrice = this.restaurantFound.table.bill.totalPrice;
+      this.billTotalPrice = this.restaurantFound.table.bill.total_price;
       //get all categories
       var getCategories = this.restaurantFound.restaurant.categories;
       //only add to the table categories the one that have ordered products in them
