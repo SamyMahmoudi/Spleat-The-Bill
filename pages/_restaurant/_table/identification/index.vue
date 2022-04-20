@@ -21,7 +21,7 @@
             v-model.trim="username" required>
 
           <!-- Modify the button's style when input is empty and call the redirection function when clicked -->
-          <button class="btn btn-fill" @click="validAuthentication" :class="{ disabled : IsEmptyInput}" :disabled="IsEmptyInput">
+          <button class="btn btn-fill" @click="validAuthentication" :class="{ disabled : isEmptyInput}" :disabled="isEmptyInput">
             Continuer
           </button>
         </form>
@@ -69,14 +69,14 @@ export default {
   },
 
   mounted() {
-    this.get_data();
+    this.getData();
     if(this.restaurantFound.table.active === false) {
       this.$router.push('/error-page')
     };
   },
 
   methods : {
-    get_data() {
+    getData() {
       // get the data of the restaurant which its corresponds to the params
       var getRestaurant = this.allRestaurants.filter( element => element.id == this.paramsOptions.theRestaurantId)
       this.restaurantFound.restaurant = getRestaurant[0];
@@ -89,9 +89,8 @@ export default {
 
     validAuthentication() {
       this.$store.commit('authentication/getName', this.username);
-      // Check that the input is not empty
-      if(!this.IsEmptyInput) {
-        // Change url without adding an history step and pass the username
+
+    if(!this.isEmptyInput) {
         this.$router.replace('selection-produits')
       }
     },
@@ -99,8 +98,7 @@ export default {
 
   },
   computed: {
-    IsEmptyInput() {
-      // Check if username entered in input is empty and return true or false
+    isEmptyInput() {
       return this.username == ''
     }
   }
