@@ -70,12 +70,12 @@ export default {
                 width: 40%;
                 border: none;
                 font-size: 14px;
-                &-disabled {
-                    width: 40%;
-                    background-color: transparent;
-                    border: none;
-                    color: rgba($color: #ffffff, $alpha: 0.5);
-                    font-size: 14px;
+                background-color: $c--primary;
+                color: #fff;
+                
+                &.nuxt-link-active {
+                    background-color: #fff;
+                    color: $c--primary;
                 }
             }
         }
