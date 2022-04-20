@@ -1,5 +1,5 @@
 <template>
-  <div id="PageWrapper">
+  <div>
     <HeaderHome :restaurantLogo="restaurantFound.restaurant.logo" />
 
     <main>
@@ -44,11 +44,11 @@ export default {
   },
 
   mounted() {
-    this.get_data()
+    this.getData()
   },
 
   methods : {
-    get_data() {
+    getData() {
       // get the data of the restaurant which its corresponds to the params
       var getRestaurant = this.allRestaurants.filter( element => element.id == this.paramsOptions.theRestaurantId)
       this.restaurantFound.restaurant = getRestaurant[0];
@@ -62,39 +62,35 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  #PageWrapper {
+    height: 100vh;
+    @include column;
 
-#PageWrapper {
-  height: 100vh;
-  @include column;
-
-  main {
-    flex: 1;
-    width: 90%;
-    margin: 0 auto;
+    main {
+      flex: 1;
+      width: 90%;
+      margin: 0 auto;
+    }
   }
-}
 
-.wrapper-titles
-{
-  padding-top: 30px;
-  text-align: center;
+  .wrapper-titles {
+    padding-top: 30px;
+    text-align: center;
 
-  h2 {
-    font-weight: normal;
-    font-size: 28px;
-    padding-top: 10px;
+    h2 {
+      font-weight: normal;
+      font-size: 28px;
+      padding-top: 10px;
+    }
   }
-}
 
-.wrapper-btn
-{
-  div:nth-of-type(1) {
-    margin-top: 60px;
+  .wrapper-btn {
+    div:nth-of-type(1) {
+      margin-top: 60px;
+    }
+    div:nth-of-type(2) {
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
   }
-  div:nth-of-type(2) {
-    margin-top: 30px;
-    margin-bottom: 30px;
-  }
-}
-
 </style>
