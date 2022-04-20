@@ -118,6 +118,7 @@ export default {
 
 <style lang="scss">
   #PageWrapper {
+    min-height: 100vh;
     @include column;
   }
 
