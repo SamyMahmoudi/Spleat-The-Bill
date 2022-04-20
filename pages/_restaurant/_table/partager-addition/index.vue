@@ -10,6 +10,9 @@
 
     <main>
       <h1>Je règle pour :</h1>
+      <p class="customerNumber">Nombre de couverts :
+        <span>{{ this.restaurantFound.table.customers }}</span>
+      </p>
       <div class="share-bill">
         <span @click="removeCustomer">-</span>
         <p>{{ numberCustomers }}
@@ -113,8 +116,14 @@ export default {
 
   main {
     h1 {
-      padding: 60px 0 30px;
+      padding: 60px 0 10px;
       font-size: 22px;
+    }
+    .customerNumber {
+      padding: 20px 0 30px;
+      span {
+        font-weight: bold;
+      }
     }
   }
 
