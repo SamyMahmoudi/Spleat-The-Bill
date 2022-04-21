@@ -99,7 +99,6 @@ export default {
 
       //get total price
       this.billTotalPrice = this.restaurantFound.table.bill.total_price;
-      console.log(this.restaurantFound.table.bill.total_price);
       //get all categories
       var getCategories = this.restaurantFound.restaurant.categories;
       //only add to the table categories the one that have ordered products in them
