@@ -10,7 +10,7 @@
         <h2 v-else>Il semblerait que des produits aient été oubliés !</h2>
         <div class="product-container">
           <!-- Temporary data to be replaced with forgotten products array -->
-          <CardProductForgot @removed="forgotItemsRemove" v-for="product in products"
+          <CardProductForgot @removed="forgottenItemsRemove" v-for="product in forgottenProducts"
           :productId="product.id"
           :productImg="product.picture"
           :productName="product.name"
@@ -20,7 +20,7 @@
           class="product-card"
           :key="product.id"/>
         </div>
-        <nuxt-link :to="`selection-produits`" class="btn btn-fill">Retour à la sélection</nuxt-link>
+        <button @click="addAll" class="btn btn-fill">Ajouter les produits</button>
         <a class="close-link" @click="$emit('closed')">Fermer</a>
       </div>
     </div>
@@ -32,30 +32,53 @@ export default {
         "products",
         "show"
     ],
+    data() {
+      return {
+        forgottenProducts: this.products,
+      }
+    },
     methods: {
-      forgotItemsRemove(product) {
+      forgottenItemsRemove(product) {
 
         let itemToRemove = null;
 
-        this.products.forEach(item => {
+        this.forgottenProducts.forEach(item => {
           if(item.id == product.id) {
             itemToRemove = item;
           }
         })
 
-        for(var i = 0; i < this.products.length; i++){ 
-            
+        for(var i = 0; i < this.forgottenProducts.length; i++){ 
           // Delete from forgotten products
-          if ( this.products[i].id === itemToRemove.id) {
-              this.products.splice(i, 1);
+          if ( this.forgottenProducts[i].id === itemToRemove.id) {
+              this.forgottenProducts.splice(i, 1);
 
-              if(this.products.length === 0) {
+              if(this.forgottenProducts.length === 0) {
                 this.$emit('closed');
               }
           }
         }
+      },
+      addAll() {
+        this.forgottenProducts.forEach(item => {
+          while(item.amount > 0) {
+            var product = {
+              index : item.index,
+              id: item.id,
+              name: item.name,
+              price: item.price,
+              img: item.picture,
+              category: item.category,
+              amount : 1
+            };
+            this.$store.commit('cart/add', product);
+            }
+          },          
+        )
+        this.forgottenProducts = [];
+        this.$emit('closed');
       }
-    },
+    }
 }
 </script>
 
