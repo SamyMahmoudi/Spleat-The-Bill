@@ -1,8 +1,8 @@
 <template>
-  <div class="product">
+  <div class="product" @click="addProduct">
     <div class="product-heading">
       <img :src="'/data/img/' + productImg" alt="Icon restaurant product">
-      <span class="product-quantity">{{ productAmount }}</span>
+      <span class="product-quantity">{{ productQuantity }}</span>
     </div>
     <h3 class="product-title">{{ productName }}</h3>
     <p class="product-footer">{{ productPrice }}€</p>
@@ -20,6 +20,44 @@ export default {
     'productName',
     'productCategory'
   ],
+  data() {
+    return {
+      theQuantity: null,
+    }
+  },
+  methods: {
+    addProduct() {
+      var product = {
+        index : this.productIndex,
+        id: this.productId,
+        name: this.productName,
+        price: this.productPrice,
+        img: this.productImg,
+        category: this.productCategory,
+        amount : 1
+      };
+
+      if(this.theQuantity >= 1) {
+        if(this.theQuantity == 1) {
+          this.$emit('removed', product);
+          
+        }
+        this.$store.commit('cart/add', product);
+      }
+
+
+    },
+  },
+  computed : {
+    productQuantity() {
+      let actualProduct = this.$store.state.cart.allItems[this.productCategory].filter(
+          product => product.id == this.productId
+        )
+
+      this.theQuantity = actualProduct[0].amount
+      return actualProduct[0].amount
+    }
+  }
 }
 </script>
 

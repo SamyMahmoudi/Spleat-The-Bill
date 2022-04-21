@@ -10,11 +10,13 @@
         <h2 v-else>Il semblerait que des produits aient été oubliés !</h2>
         <div class="product-container">
           <!-- Temporary data to be replaced with forgotten products array -->
-          <CardProductForgot v-for="product in products"
+          <CardProductForgot @removed="forgotItemsRemove" v-for="product in products"
+          :productId="product.id"
           :productImg="product.picture"
           :productName="product.name"
           :productAmount="product.amount"
           :productPrice="product.price"
+          :productCategory="product.category"
           class="product-card"
           :key="product.id"/>
         </div>
@@ -30,12 +32,30 @@ export default {
         "products",
         "show"
     ],
-    data() {
-        return {
-            forgottenAmount: 1,
-            showModal: this.show,
-        };
-    }
+    methods: {
+      forgotItemsRemove(product) {
+
+        let itemToRemove = null;
+
+        this.products.forEach(item => {
+          if(item.id == product.id) {
+            itemToRemove = item;
+          }
+        })
+
+        for(var i = 0; i < this.products.length; i++){ 
+            
+          // Delete from forgotten products
+          if ( this.products[i].id === itemToRemove.id) {
+              this.products.splice(i, 1);
+
+              if(this.products.length === 0) {
+                this.$emit('closed');
+              }
+          }
+        }
+      }
+    },
 }
 </script>
 
