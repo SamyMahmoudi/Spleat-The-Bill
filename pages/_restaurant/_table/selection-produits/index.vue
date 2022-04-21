@@ -11,7 +11,7 @@
     />
 
     <!-- content -->
-    <main>
+    <div class="main-selectProduct">
 
       <div>
 
@@ -39,7 +39,7 @@
 
       </div>
 
-    </main>
+    </div>
 
     <Panier />
 
@@ -120,6 +120,12 @@ export default {
   #PageWrapper {
     min-height: 100vh;
     @include column;
+  }
+
+  .main-selectProduct
+  {
+    width: 95%;
+    margin-left: 5%;
   }
 
   .category-item
