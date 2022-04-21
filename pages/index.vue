@@ -37,17 +37,23 @@ export default {
 </script>
 
 <style lang="scss">
+  main h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
   details {
-    margin: 0 auto;
+    margin: 0 auto 30px;
     width: 90%;
-    border-radius: 54px;
+    border-radius: 20px;
     font-family: "Axiforma";
-    padding: 1em;
+    padding: 0.75em;
     color: #fff;
     background-color: $c--primary;
-    margin-bottom: 20px;
     summary {
       padding: 0.3em;
+      &::marker {
+        list-style-position: inside;
+      }
     }
   }
   details[open] {
@@ -57,7 +63,7 @@ export default {
     border-radius: 20px;
     summary {
       border-radius: 20px 20px 0 0;
-      padding: 0.5em;
+      padding: 1em;
       background-color: $c--primary;
       &::marker {
         width: 20px;
@@ -66,10 +72,25 @@ export default {
     }
     ul {
       li {
-        padding: 1em;
+        font-weight: bold;
+        padding: 0 1em;
+        a {
+          display: block;
+          margin: 0.75em 0;
+        }
         .link {
           color: $c--primary;
+
         }
+        
+      }
+
+      hr {
+        border: none;
+        border-top: 1px solid $c--primary;
+      }
+      &:last-child hr {
+          display:none;
       }
     }
   }
