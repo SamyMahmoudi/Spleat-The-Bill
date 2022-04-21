@@ -49,6 +49,7 @@ export default {
     padding: 0.75em;
     color: #fff;
     background-color: $c--primary;
+    cursor: pointer;
     summary {
       padding: 0.3em;
       &::marker {
@@ -80,7 +81,6 @@ export default {
         }
         .link {
           color: $c--primary;
-
         }
         
       }
