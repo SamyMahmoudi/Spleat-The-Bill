@@ -187,7 +187,8 @@ export default {
     }
 }
 .add-btn {
-    width: 120px;
+    max-width: 120px;
+    min-width: 120px;
     height: 156px;
     display: flex;
     flex-direction: column;
