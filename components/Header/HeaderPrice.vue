@@ -69,10 +69,10 @@ export default {
             .price-link {
                 width: 40%;
                 border: none;
-                font-size: 14px;
+                font-size: 12px;
                 background-color: $c--primary;
                 color: #fff;
-                
+
                 &.nuxt-link-active {
                     background-color: #fff;
                     color: $c--primary;

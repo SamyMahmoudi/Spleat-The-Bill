@@ -19,13 +19,15 @@
                 :productIndex='product.product.index'
                 class="product-card"
                 :key="product.product.id"/>
-            <div class="add-btn">
+
+            <nuxt-link :to="`selection-produits`" class="add-btn">
                 <nuxt-link :to="`selection-produits`"><img src="/images/add-logo-recap.png" alt="add product logo"></nuxt-link>
                 <nuxt-link class="add-click" :to="`selection-produits`">ajouter un produit</nuxt-link>
-            </div>
+            </nuxt-link>
+
         </div>
         <button
-            @click="checkItems" 
+            @click="checkItems"
             class="btn btn-fill">Payer {{ Math.round(totalPrice * 100) / 100 }} €
         </button>
         <ForgottenProducts
@@ -126,6 +128,8 @@ export default {
 
 #PageWrapper {
     @include column;
+    min-height: 100vh;
+    margin-bottom: 30px;
 }
 
 .title {
@@ -190,6 +194,7 @@ export default {
     align-items: center;
     justify-content: center;
     gap: 10px;
+    margin: 10px;
 
     img {
         width: 33px;

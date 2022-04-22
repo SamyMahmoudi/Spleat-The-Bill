@@ -85,7 +85,6 @@ export const mutations = {
           element.product.amount--;
           return
         } else {
-          console.log(element.product.name + " " + element.product.amount)
           state.items.remove(i)
           if (state.items.length == 0) {
             state.isItems = false

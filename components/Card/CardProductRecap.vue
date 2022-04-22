@@ -45,6 +45,8 @@ export default {
   .product
   {
     cursor: pointer;
+    min-width: 120px;
+    max-width: 120px;
     box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
     padding: 0.5em 1em 0;
     text-align: center;
