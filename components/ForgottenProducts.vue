@@ -6,8 +6,8 @@
       <div class="forgotten-products">
         <hr class="header-line">
         <!-- Check the number of forgotten products to adjust plural or singular -->
-        <h2 v-if="products.length == 1">Il semblerait qu'un produit ait été oublié !</h2>
-        <h2 v-else>Il semblerait que des produits aient été oubliés !</h2>
+        <h2 class="forgotten-title" v-if="products.length == 1">Il semblerait qu'un produit ait été oublié !</h2>
+        <h2 class="forgotten-title" v-else>Il semblerait que des produits aient été oubliés !</h2>
         <div class="product-container">
           <!-- Temporary data to be replaced with forgotten products array -->
           <CardProductForgot @removed="forgottenItemsRemove" v-for="product in forgottenProducts"
@@ -48,7 +48,7 @@ export default {
           }
         })
 
-        for(var i = 0; i < this.forgottenProducts.length; i++){ 
+        for(var i = 0; i < this.forgottenProducts.length; i++){
           // Delete from forgotten products
           if ( this.forgottenProducts[i].id === itemToRemove.id) {
               this.forgottenProducts.splice(i, 1);
@@ -73,7 +73,7 @@ export default {
             };
             this.$store.commit('cart/add', product);
             }
-          },          
+          },
         )
         this.forgottenProducts = [];
         this.$emit('closed');
@@ -85,12 +85,16 @@ export default {
 <style lang="scss">
 .forgotten
 {
+  &-title {
+    padding: 0 0.75em;
+  }
+
   &-container {
     z-index: 1;
     background-color: rgb(0, 0, 0, 0.7);
     height: 100vh;
     width: 100vw;
-    position: fixed; 
+    position: fixed;
     top: 0;
     left: 0;
     text-align: center;
@@ -104,15 +108,15 @@ export default {
     bottom: 0;
     width: 100%;
     background-color: #fff;
-    padding: 0 1em 1em 1em;
+    padding-bottom: 1em;
     border-radius: 15px 15px 0 0;
 
     .btn {
       margin-bottom: 1em;
     }
   }
-  
-  
+
+
 }
 
 .header-line {
@@ -134,7 +138,7 @@ export default {
       right: 0;
       left: 0;
       height: 1px;
-      bottom: -4px; 
+      bottom: -4px;
 		  width: 100%;
 		  background: #E7E7E7;
     }
