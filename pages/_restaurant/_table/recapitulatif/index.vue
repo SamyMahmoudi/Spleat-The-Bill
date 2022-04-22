@@ -107,6 +107,7 @@ export default {
             for(const category in allItems) {
                 allItems[category].forEach(product => {
                     if(product.amount != 0) {
+                        product.category = category;
                         this.forgotItems.push(product)
                     }
                 })
